@@ -3,190 +3,1405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevé — Digital Business Cards</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <title>CardStack – Digital Business Cards</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #000000;
+            --black-1: #0a0a0a;
+            --black-2: #111111;
+            --black-3: #1a1a1a;
+            --black-4: #222222;
+            --black-5: #2a2a2a;
+            --white: #ffffff;
+            --white-80: rgba(255,255,255,0.8);
+            --white-60: rgba(255,255,255,0.6);
+            --white-40: rgba(255,255,255,0.4);
+            --white-20: rgba(255,255,255,0.2);
+            --white-10: rgba(255,255,255,0.1);
+            --white-06: rgba(255,255,255,0.06);
+            --white-04: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08);
+            --border-hover: rgba(255,255,255,0.15);
+        }
+
+        html { scroll-behavior: auto; }
+
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        .luxury-font {
-            font-family: 'Playfair Display', serif;
+
+        ::-webkit-scrollbar { width: 1px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: #333; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 999;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.3s;
         }
-        .hero-bg {
-            background: radial-gradient(circle at center, #111111 0%, #0a0a0a 100%);
+
+        .nav-logo {
+            display: flex; align-items: center; gap: 9px;
+            text-decoration: none; color: var(--white);
         }
-        .glass {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(20px);
+        .nav-logo-mark {
+            width: 28px; height: 28px; background: var(--white);
+            border-radius: 7px; display: flex; align-items: center; justify-content: center;
         }
-        .card-3d {
-            perspective: 1200px;
+        .nav-logo-mark svg { width: 16px; height: 16px; }
+        .nav-logo-text { font-size: 15px; font-weight: 600; letter-spacing: -0.3px; }
+
+        .nav-center { display: flex; align-items: center; gap: 2px; }
+        .nav-center a {
+            color: var(--white-40); text-decoration: none; font-size: 13.5px;
+            font-weight: 450; padding: 6px 12px; border-radius: 6px; transition: color 0.15s;
         }
-        .card-inner {
-            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            transform-style: preserve-3d;
+        .nav-center a:hover { color: var(--white); }
+
+        .nav-right { display: flex; align-items: center; gap: 8px; }
+        .nav-btn-ghost {
+            color: var(--white-60); font-size: 13.5px; font-weight: 500;
+            padding: 7px 14px; border-radius: 7px; background: none; border: none;
+            cursor: pointer; transition: color 0.15s; text-decoration: none;
         }
-        .card-3d:hover .card-inner {
-            transform: rotateY(12deg) rotateX(8deg);
+        .nav-btn-ghost:hover { color: var(--white); }
+        .nav-btn-primary {
+            background: var(--white); color: var(--black); font-size: 13px; font-weight: 600;
+            padding: 7px 16px; border-radius: 7px; border: none; cursor: pointer;
+            transition: opacity 0.15s; text-decoration: none; letter-spacing: -0.2px;
+        }
+        .nav-btn-primary:hover { opacity: 0.88; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            padding: 120px 32px 80px; position: relative;
+        }
+        .hero-noise {
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none; opacity: 0.4;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 7px;
+            border: 1px solid var(--border); border-radius: 100px;
+            padding: 5px 14px 5px 8px; font-size: 12px; font-weight: 500;
+            color: var(--white-60); margin-bottom: 36px; background: var(--white-04);
+            animation: fadeUp 0.6s ease both;
+        }
+        .hero-badge-dot {
+            width: 18px; height: 18px; border-radius: 5px; background: var(--white-10);
+            display: flex; align-items: center; justify-content: center; font-size: 10px;
+        }
+        .hero-badge span { color: var(--white-80); }
+
+        .hero-h1 {
+            font-size: clamp(52px, 8vw, 96px); font-weight: 800; line-height: 1.02;
+            letter-spacing: -4px; margin-bottom: 22px; max-width: 860px;
+            animation: fadeUp 0.7s ease 0.08s both; color: var(--white);
+        }
+        .hero-h1 em { font-style: normal; color: var(--white-40); }
+
+        .hero-sub {
+            font-size: 17px; color: var(--white-40); max-width: 440px; line-height: 1.7;
+            margin-bottom: 44px; animation: fadeUp 0.7s ease 0.16s both; font-weight: 400;
+        }
+        .hero-actions {
+            display: flex; align-items: center; gap: 12px;
+            animation: fadeUp 0.7s ease 0.24s both; flex-wrap: wrap; justify-content: center;
+        }
+        .btn-white {
+            background: var(--white); color: var(--black); font-size: 14px; font-weight: 650;
+            padding: 12px 24px; border-radius: 9px; border: none; cursor: pointer;
+            text-decoration: none; letter-spacing: -0.3px; transition: opacity 0.15s;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn-white:hover { opacity: 0.88; }
+        .btn-dark {
+            background: var(--white-06); color: var(--white-80); font-size: 14px; font-weight: 500;
+            padding: 12px 24px; border-radius: 9px; border: 1px solid var(--border);
+            cursor: pointer; text-decoration: none; transition: all 0.15s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-dark:hover { background: var(--white-10); border-color: var(--border-hover); color: var(--white); }
+
+        .hero-numbers {
+            display: flex; align-items: center; gap: 0;
+            margin-top: 72px; animation: fadeUp 0.7s ease 0.32s both;
+        }
+        .hero-num-item {
+            padding: 0 40px; border-right: 1px solid var(--border); text-align: center;
+        }
+        .hero-num-item:first-child { padding-left: 0; }
+        .hero-num-item:last-child { border-right: none; padding-right: 0; }
+        .hero-num-val {
+            font-size: 28px; font-weight: 750; letter-spacing: -1.5px;
+            color: var(--white); line-height: 1; margin-bottom: 5px;
+        }
+        .hero-num-label { font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 400; }
+
+        /* ── SHOWCASE ── */
+        .showcase { padding: 0 32px 120px; animation: fadeUp 0.8s ease 0.4s both; }
+        .showcase-inner {
+            max-width: 1100px; margin: 0 auto; background: var(--black-1);
+            border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+        }
+        .showcase-bar {
+            display: flex; align-items: center; gap: 14px; padding: 14px 20px;
+            border-bottom: 1px solid var(--border); background: var(--black-2);
+        }
+        .s-dots { display: flex; gap: 6px; }
+        .s-dot { width: 11px; height: 11px; border-radius: 50%; }
+        .s-dot.r { background: #3a3a3a; }
+        .s-dot.y { background: #3a3a3a; }
+        .s-dot.g { background: #3a3a3a; }
+        .s-tabs { display: flex; gap: 2px; }
+        .s-tab {
+            padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 500;
+            color: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.15s;
+        }
+        .s-tab.active { background: var(--white-10); color: var(--white-80); }
+        .s-tab:hover:not(.active) { color: var(--white-60); }
+        .showcase-body {
+            padding: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+        }
+        .bc {
+            border-radius: 14px; padding: 26px; position: relative; overflow: hidden;
+            cursor: pointer; transition: transform 0.25s ease; min-height: 190px;
+            display: flex; flex-direction: column; justify-content: space-between;
+            border: 1px solid var(--border); background: var(--black-2);
+        }
+        .bc:hover { transform: translateY(-3px); }
+        .bc-chip {
+            position: absolute; top: 18px; right: 18px; width: 28px; height: 20px;
+            border-radius: 4px; background: var(--white-10); border: 1px solid var(--white-10);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .bc-chip svg { width: 16px; height: 11px; opacity: 0.4; }
+        .bc-tag {
+            font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+            color: rgba(255,255,255,0.3); margin-bottom: 20px;
+        }
+        .bc-initial {
+            width: 38px; height: 38px; border-radius: 10px; background: var(--white-10);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 14px;
+            border: 1px solid var(--white-10);
+        }
+        .bc-name { font-size: 15px; font-weight: 650; color: var(--white); letter-spacing: -0.4px; margin-bottom: 2px; }
+        .bc-title { font-size: 11.5px; color: var(--white-40); font-weight: 400; }
+        .bc-bottom {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border);
+        }
+        .bc-email { font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; }
+        .bc-nfc {
+            width: 24px; height: 24px; border-radius: 6px; background: var(--white-06);
+            border: 1px solid var(--border); display: flex; align-items: center;
+            justify-content: center; font-size: 11px;
+        }
+
+        /* ── MARQUEE ── */
+        .marquee-wrap {
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            background: var(--black-1); overflow: hidden; padding: 18px 0;
+        }
+        .marquee-track {
+            display: flex; animation: ticker 30s linear infinite; width: max-content;
+        }
+        .m-item {
+            display: flex; align-items: center; gap: 10px; padding: 0 36px;
+            border-right: 1px solid var(--border); font-size: 13px; font-weight: 500;
+            color: var(--white-40); white-space: nowrap;
+        }
+        .m-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--white-20); flex-shrink: 0; }
+        @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── SECTIONS ── */
+        .section { padding: 120px 32px; border-top: 1px solid var(--border); }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .s-eyebrow {
+            font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+            color: rgba(255,255,255,0.3); margin-bottom: 18px;
+        }
+        .s-h2 {
+            font-size: clamp(34px, 5vw, 58px); font-weight: 780; letter-spacing: -2.5px;
+            line-height: 1.05; color: var(--white); margin-bottom: 16px;
+        }
+        .s-h2 em { font-style: normal; color: rgba(255,255,255,0.3); }
+        .s-p { font-size: 16px; color: var(--white-40); line-height: 1.7; font-weight: 400; }
+
+        /* ── FEATURES ── */
+        .features-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr);
+            gap: 12px; margin-top: 64px;
+        }
+        .feat {
+            background: var(--black-1); border: 1px solid var(--border);
+            border-radius: 16px; padding: 32px; transition: border-color 0.3s, box-shadow 0.3s;
+            overflow: hidden; position: relative;
+        }
+        .feat-sm { grid-column: span 4; }
+        .feat-md { grid-column: span 6; }
+        .feat-lg { grid-column: span 8; }
+
+        /* Feature glow state triggered by animation */
+        .feat.energy-active {
+            border-color: rgba(255,255,255,0.25) !important;
+            box-shadow: 0 0 30px rgba(255,255,255,0.06), inset 0 0 20px rgba(255,255,255,0.02) !important;
+        }
+
+        .feat-icon {
+            width: 40px; height: 40px; border-radius: 10px; background: var(--white-06);
+            border: 1px solid var(--border); display: flex; align-items: center;
+            justify-content: center; font-size: 18px; margin-bottom: 22px;
+        }
+        .feat-title { font-size: 16px; font-weight: 650; letter-spacing: -0.5px; color: var(--white); margin-bottom: 9px; }
+        .feat-desc { font-size: 13.5px; color: var(--white-40); line-height: 1.65; }
+
+        .feat-list { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+        .feat-list-row {
+            display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+            border-radius: 10px; background: var(--black-2); border: 1px solid var(--border);
+            transition: border-color 0.15s; cursor: pointer;
+        }
+        .feat-list-row:hover { border-color: var(--border-hover); }
+        .fl-av {
+            width: 30px; height: 30px; border-radius: 8px; background: var(--white-10);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700; flex-shrink: 0;
+        }
+        .fl-info { flex: 1; min-width: 0; }
+        .fl-name { font-size: 12.5px; font-weight: 600; color: var(--white-80); letter-spacing: -0.2px; }
+        .fl-role { font-size: 11px; color: rgba(255,255,255,0.3); }
+        .fl-status { width: 7px; height: 7px; border-radius: 50%; background: #3a3a3a; flex-shrink: 0; }
+        .fl-status.live { background: #4ade80; box-shadow: 0 0 8px rgba(74,222,128,0.4); }
+
+        .feat-chart { margin-top: 24px; display: flex; align-items: flex-end; gap: 6px; height: 60px; }
+        .chart-bar { flex: 1; border-radius: 4px 4px 0 0; background: var(--white-10); transition: background 0.2s; cursor: pointer; }
+        .chart-bar:hover { background: var(--white-20); }
+        .chart-bar.hi { background: rgba(255,255,255,0.3); }
+        .feat-chart-labels { display: flex; gap: 6px; margin-top: 6px; }
+        .chart-label { flex: 1; text-align: center; font-size: 10px; color: var(--white-20); }
+
+        /* ── HOW IT WORKS ── */
+        .how-layout {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 100px; align-items: center; margin-top: 72px;
+        }
+        .steps { display: flex; flex-direction: column; }
+        .step {
+            display: flex; gap: 20px; padding: 24px 0;
+            border-bottom: 1px solid var(--border); cursor: pointer;
+        }
+        .step:first-child { padding-top: 0; }
+        .step:last-child { border-bottom: none; padding-bottom: 0; }
+        .step-n {
+            width: 30px; height: 30px; border-radius: 8px; background: var(--white-06);
+            border: 1px solid var(--border); display: flex; align-items: center;
+            justify-content: center; font-size: 12px; font-weight: 600;
+            color: rgba(255,255,255,0.3); flex-shrink: 0; margin-top: 2px; transition: all 0.2s;
+        }
+        .step:hover .step-n { background: var(--white); color: var(--black); border-color: var(--white); }
+        .step-title { font-size: 15px; font-weight: 650; color: var(--white-80); letter-spacing: -0.4px; margin-bottom: 6px; transition: color 0.15s; }
+        .step:hover .step-title { color: var(--white); }
+        .step-desc { font-size: 13.5px; color: rgba(255,255,255,0.3); line-height: 1.65; }
+
+        /* phone */
+        .phone-wrap { display: flex; justify-content: center; }
+        .phone {
+            width: 280px; background: var(--black-2); border: 1px solid var(--border);
+            border-radius: 44px; padding: 18px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.03);
+        }
+        .phone-pill {
+            width: 70px; height: 6px; background: var(--black-4);
+            border-radius: 3px; margin: 0 auto 18px;
+        }
+        .phone-screen {
+            background: var(--black-3); border-radius: 30px;
+            padding: 20px; min-height: 440px; position: relative;
+        }
+        .p-header {
+            font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3);
+            letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 14px;
+        }
+        .p-card {
+            background: var(--black-2); border: 1px solid var(--border);
+            border-radius: 18px; padding: 20px; margin-bottom: 12px; position: relative; overflow: hidden;
+        }
+        .p-card-glow {
+            position: absolute; width: 120px; height: 120px; border-radius: 50%;
+            background: rgba(255,255,255,0.02); top: -30px; right: -30px;
+        }
+        .p-av {
+            width: 44px; height: 44px; border-radius: 12px; background: var(--white-10);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 700; margin-bottom: 14px;
+        }
+        .p-name { font-size: 16px; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
+        .p-role { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+        .p-hr { height: 1px; background: var(--border); margin: 14px 0; }
+        .p-row { display: flex; align-items: center; gap: 9px; margin-bottom: 7px; }
+        .p-ico {
+            width: 22px; height: 22px; border-radius: 6px; background: var(--white-06);
+            display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0;
+        }
+        .p-txt { font-size: 11.5px; color: var(--white-40); }
+        .p-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+        .p-act {
+            background: var(--white-06); border: 1px solid var(--border); border-radius: 9px;
+            padding: 9px; text-align: center; font-size: 11px; font-weight: 500;
+            color: var(--white-40); cursor: pointer; transition: all 0.15s;
+        }
+        .p-act:hover { background: var(--white-10); color: rgba(255,255,255,0.7); }
+
+        /* Source phone glow when card is near */
+        .phone.source-active {
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.03),
+                        0 0 40px rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.2);
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+
+        /* ── INTEGRATIONS ── */
+        .int-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .int-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .int-item {
+            background: var(--black-1); border: 1px solid var(--border); border-radius: 14px;
+            padding: 20px 12px; display: flex; flex-direction: column; align-items: center;
+            gap: 10px; cursor: pointer; transition: all 0.2s;
+        }
+        .int-item:hover { border-color: var(--border-hover); background: var(--black-2); }
+        .int-icon {
+            width: 40px; height: 40px; border-radius: 11px; background: var(--white-06);
+            border: 1px solid var(--border); display: flex; align-items: center;
+            justify-content: center; font-size: 18px;
+        }
+        .int-name { font-size: 11px; color: var(--white-40); text-align: center; font-weight: 500; }
+
+        /* ── PRICING ── */
+        .pricing-toggle-wrap { display: flex; justify-content: center; margin-top: 16px; }
+        .ptoggle {
+            display: inline-flex; background: var(--black-2); border: 1px solid var(--border);
+            border-radius: 9px; padding: 3px; gap: 3px;
+        }
+        .ptbtn {
+            padding: 7px 18px; border-radius: 7px; font-size: 13px; font-weight: 500;
+            cursor: pointer; border: none; background: none; color: var(--white-40); transition: all 0.2s;
+        }
+        .ptbtn.active { background: var(--white-10); color: var(--white); }
+        .save-tag {
+            font-size: 10px; font-weight: 650; background: var(--white-10); color: var(--white-60);
+            padding: 2px 7px; border-radius: 5px; margin-left: 5px;
+        }
+        .pricing-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 60px; }
+        .pc {
+            background: var(--black-1); border: 1px solid var(--border); border-radius: 18px;
+            padding: 32px; position: relative; transition: border-color 0.2s;
+        }
+        .pc:hover { border-color: var(--border-hover); }
+        .pc.popular { border-color: rgba(255,255,255,0.15); background: var(--black-2); }
+        .popular-label {
+            position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+            background: var(--white); color: var(--black); font-size: 10.5px; font-weight: 700;
+            padding: 4px 14px; border-radius: 0 0 8px 8px;
+        }
+        .pc-plan { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+        .pc-price { font-size: 48px; font-weight: 800; letter-spacing: -3px; line-height: 1; color: var(--white); margin-bottom: 4px; }
+        .pc-price sup { font-size: 22px; font-weight: 600; vertical-align: super; }
+        .pc-per { font-size: 13px; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+        .pc-desc { font-size: 13.5px; color: var(--white-40); line-height: 1.6; margin-bottom: 28px; }
+        .pc-btn-white {
+            display: block; background: var(--white); color: var(--black); font-size: 13.5px;
+            font-weight: 650; padding: 11px; border-radius: 9px; text-align: center;
+            text-decoration: none; transition: opacity 0.15s; border: none; cursor: pointer; width: 100%;
+        }
+        .pc-btn-white:hover { opacity: 0.85; }
+        .pc-btn-dark {
+            display: block; background: var(--white-06); color: rgba(255,255,255,0.7);
+            font-size: 13.5px; font-weight: 600; padding: 11px; border-radius: 9px;
+            text-align: center; text-decoration: none; transition: all 0.15s;
+            border: 1px solid var(--border); cursor: pointer; width: 100%;
+        }
+        .pc-btn-dark:hover { background: var(--white-10); color: var(--white); }
+        .pc-divider { height: 1px; background: var(--border); margin: 24px 0; }
+        .pc-features { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+        .pc-features li { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,0.5); }
+        .pc-features li .ck {
+            width: 18px; height: 18px; border-radius: 5px; background: var(--white-06);
+            border: 1px solid var(--border); display: flex; align-items: center;
+            justify-content: center; font-size: 10px; color: var(--white-60); flex-shrink: 0;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 64px; }
+        .testi {
+            background: var(--black-1); border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px; transition: border-color 0.2s;
+        }
+        .testi:hover { border-color: var(--border-hover); }
+        .testi-stars { display: flex; gap: 2px; margin-bottom: 16px; }
+        .star { font-size: 12px; color: var(--white-40); }
+        .testi-text { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.72; margin-bottom: 22px; }
+        .testi-author { display: flex; align-items: center; gap: 11px; }
+        .t-av {
+            width: 36px; height: 36px; border-radius: 10px; background: var(--white-10);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700; border: 1px solid var(--border);
+        }
+        .t-name { font-size: 13px; font-weight: 600; color: var(--white-80); letter-spacing: -0.2px; }
+        .t-role { font-size: 11.5px; color: rgba(255,255,255,0.3); }
+
+        /* ── CTA ── */
+        .cta-section {
+            border-top: 1px solid var(--border); padding: 140px 32px;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .cta-bg {
+            position: absolute; width: 700px; height: 700px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
+            top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
+        }
+        .cta-h2 {
+            font-size: clamp(42px, 7vw, 86px); font-weight: 820; letter-spacing: -4px;
+            line-height: 1.02; color: var(--white); margin-bottom: 20px;
+            max-width: 800px; margin-left: auto; margin-right: auto;
+        }
+        .cta-h2 em { font-style: normal; color: rgba(255,255,255,0.3); }
+        .cta-sub { font-size: 16px; color: var(--white-40); max-width: 400px; margin: 0 auto 44px; line-height: 1.65; }
+        .cta-actions { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .cta-fine { margin-top: 22px; font-size: 12px; color: rgba(255,255,255,0.25); }
+
+        /* ── FOOTER ── */
+        footer { border-top: 1px solid var(--border); padding: 72px 32px 40px; background: var(--black); }
+        .footer-top {
+            max-width: 1100px; margin: 0 auto 56px;
+            display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr 1fr; gap: 48px;
+        }
+        .ft-brand-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--white); margin-bottom: 14px; }
+        .ft-tagline { font-size: 13.5px; color: rgba(255,255,255,0.3); line-height: 1.7; max-width: 260px; margin-bottom: 24px; }
+        .ft-socials { display: flex; gap: 8px; }
+        .ft-social {
+            width: 32px; height: 32px; border-radius: 8px; background: var(--white-06);
+            border: 1px solid var(--border); display: flex; align-items: center;
+            justify-content: center; font-size: 13px; cursor: pointer; transition: all 0.15s;
+            text-decoration: none; color: var(--white-40);
+        }
+        .ft-social:hover { background: var(--white-10); border-color: var(--border-hover); color: var(--white); }
+        .ft-col-title { font-size: 12px; font-weight: 600; color: var(--white-60); margin-bottom: 18px; }
+        .ft-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+        .ft-links a { font-size: 13.5px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.15s; }
+        .ft-links a:hover { color: rgba(255,255,255,0.7); }
+        .footer-bottom {
+            max-width: 1100px; margin: 0 auto; display: flex; align-items: center;
+            justify-content: space-between; padding-top: 28px; border-top: 1px solid var(--border);
+        }
+        .fb-copy { font-size: 12.5px; color: var(--white-20); }
+        .fb-links { display: flex; gap: 22px; }
+        .fb-links a { font-size: 12.5px; color: var(--white-20); text-decoration: none; transition: color 0.15s; }
+        .fb-links a:hover { color: rgba(255,255,255,0.5); }
+
+        /* ── KEYFRAMES ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.on { opacity: 1; transform: none; }
+
+        /* ── FLYING CARD ── */
+        #flying-card {
+            position: fixed;
+            top: 0; left: 0;
+            width: 190px;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0;
+            will-change: transform, opacity;
+            transform: translate(-9999px, -9999px);
+        }
+        .flying-card-inner {
+            background: #141414;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.04), 0 0 30px rgba(255,255,255,0.05);
+            position: relative; overflow: hidden;
+        }
+        .flying-card-inner::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+            border-radius: 16px;
+        }
+        .fc-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: rgba(255,255,255,0.22); margin-bottom: 12px; }
+        .fc-av {
+            width: 32px; height: 32px; border-radius: 9px; background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .fc-name { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: -0.3px; margin-bottom: 2px; }
+        .fc-role { font-size: 10px; color: rgba(255,255,255,0.32); margin-bottom: 10px; }
+        .fc-divider { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 8px; }
+        .fc-email { font-size: 10px; color: rgba(255,255,255,0.22); }
+        .fc-shine {
+            position: absolute; top: -50%; left: -50%; width: 60px; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+            transform: rotate(20deg);
+            animation: cardShine 3s ease-in-out infinite;
+        }
+        @keyframes cardShine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        /* ── ENERGY CANVAS ── */
+        #energy-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 860px) {
+            nav { padding: 0 20px; }
+            .nav-center { display: none; }
+            .section { padding: 80px 20px; }
+            .features-grid { grid-template-columns: 1fr !important; }
+            .feat-sm, .feat-md, .feat-lg { grid-column: span 1; }
+            .how-layout { grid-template-columns: 1fr; gap: 52px; }
+            .int-layout { grid-template-columns: 1fr; gap: 52px; }
+            .int-grid { grid-template-columns: repeat(3, 1fr); }
+            .pricing-cards { grid-template-columns: 1fr; }
+            .testi-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 14px; }
+            .hero-numbers { flex-wrap: wrap; justify-content: center; }
+            .hero-num-item { padding: 0 20px; }
+            #flying-card, #energy-canvas { display: none; }
         }
     </style>
 </head>
-<body class="bg-black text-white overflow-x-hidden">
+<body>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-black/70 backdrop-blur-lg">
-        <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 border border-white rounded-2xl flex items-center justify-center text-xl font-light">E</div>
-                <span class="text-2xl tracking-tighter luxury-font">Elevé</span>
-            </div>
-            <div class="hidden md:flex items-center gap-10 text-sm tracking-wider">
-                <a href="#features" class="hover:text-gray-400 transition">Features</a>
-                <a href="#templates" class="hover:text-gray-400 transition">Templates</a>
-                <a href="#experience" class="hover:text-gray-400 transition">The Experience</a>
-                <a href="#pricing" class="hover:text-gray-400 transition">Pricing</a>
-            </div>
-            <a href="#" class="px-8 py-3.5 border border-white/70 hover:border-white rounded-2xl text-sm font-medium transition">
-                Start Free
-            </a>
+<!-- ── ENERGY CANVAS ── -->
+<canvas id="energy-canvas"></canvas>
+
+<!-- ── FLYING CARD ── -->
+<div id="flying-card" aria-hidden="true">
+    <div class="flying-card-inner">
+        <div class="fc-shine"></div>
+        <div class="fc-tag">Pro Card</div>
+        <div class="fc-av">A</div>
+        <div class="fc-name">Alex Morgan</div>
+        <div class="fc-role">Sr. Product Designer · Acme</div>
+        <div class="fc-divider"></div>
+        <div class="fc-email">alex@acme.com</div>
+    </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+    <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">
+            <svg viewBox="0 0 16 16" fill="none">
+                <rect x="1" y="1" width="6" height="6" rx="1.5" fill="#000"/>
+                <rect x="9" y="1" width="6" height="6" rx="1.5" fill="#000"/>
+                <rect x="1" y="9" width="6" height="6" rx="1.5" fill="#000"/>
+                <rect x="9" y="9" width="6" height="4" rx="1.5" fill="#000" opacity="0.4"/>
+            </svg>
         </div>
-    </nav>
+        <span class="nav-logo-text">CardStack</span>
+    </a>
+    <div class="nav-center">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#pricing">Pricing</a>
+    </div>
+    <div class="nav-right">
+        <a href="#" class="nav-btn-ghost">Log in</a>
+        <a href="#" class="nav-btn-primary">Get started</a>
+    </div>
+</nav>
 
-    <!-- Hero -->
-    <section class="hero-bg min-h-screen flex items-center pt-20">
-        <div class="max-w-6xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
-            <div class="space-y-8">
-                <h1 class="text-7xl md:text-8xl leading-none tracking-tighter luxury-font font-light">
-                    Connections,<br>redefined.
-                </h1>
-                <p class="text-xl text-gray-400 max-w-lg">
-                    Exquisitely crafted digital business cards. 
-                    Share with NFC, QR, or link. Remember every meeting with intelligent context.
-                </p>
-                <div class="flex items-center gap-5">
-                    <a href="#" class="px-10 py-5 bg-white text-black rounded-3xl font-medium hover:scale-105 transition">
-                        Create Your Card
-                    </a>
-                    <a href="#" class="px-8 py-5 border border-white/30 rounded-3xl hover:bg-white/5 transition">
-                        Watch Film →
-                    </a>
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-badge">
+        <div class="hero-badge-dot">✦</div>
+        <span>AI card scanning</span> is now live
+    </div>
+    <h1 class="hero-h1">Your cards.<br><em>Always with you.</em></h1>
+    <p class="hero-sub">Create, share, and organize digital business cards. Built for professionals who mean business.</p>
+    <div class="hero-actions">
+        <a href="#" class="btn-white">Get started free →</a>
+        <a href="#" class="btn-dark">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="6" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+                <path d="M5.5 4.5L9.5 7L5.5 9.5V4.5Z" fill="rgba(255,255,255,0.5)"/>
+            </svg>
+            Watch demo
+        </a>
+    </div>
+    <div class="hero-numbers">
+        <div class="hero-num-item">
+            <div class="hero-num-val" data-target="250" data-suffix="K+">250K+</div>
+            <div class="hero-num-label">Cards created</div>
+        </div>
+        <div class="hero-num-item">
+            <div class="hero-num-val" data-target="40" data-suffix="K+">40K+</div>
+            <div class="hero-num-label">Professionals</div>
+        </div>
+        <div class="hero-num-item">
+            <div class="hero-num-val" data-target="4.9" data-suffix="">4.9</div>
+            <div class="hero-num-label">App rating</div>
+        </div>
+        <div class="hero-num-item">
+            <div class="hero-num-val" data-target="98" data-suffix="%">98%</div>
+            <div class="hero-num-label">Satisfaction</div>
+        </div>
+    </div>
+</section>
+
+<!-- ── SHOWCASE ── -->
+<div class="showcase reveal">
+    <div class="showcase-inner">
+        <div class="showcase-bar">
+            <div class="s-dots">
+                <div class="s-dot r"></div><div class="s-dot y"></div><div class="s-dot g"></div>
+            </div>
+            <div class="s-tabs">
+                <div class="s-tab active">My Cards</div>
+                <div class="s-tab">Contacts</div>
+                <div class="s-tab">Team</div>
+                <div class="s-tab">Analytics</div>
+            </div>
+        </div>
+        <div class="showcase-body">
+            <div class="bc">
+                <div class="bc-chip"><svg viewBox="0 0 16 11" fill="none"><rect x="0.5" y="0.5" width="15" height="10" rx="1.5" stroke="rgba(255,255,255,0.3)"/><rect x="0.5" y="3.5" width="15" height="1" fill="rgba(255,255,255,0.15)"/></svg></div>
+                <div><div class="bc-tag">Personal</div><div class="bc-initial">A</div><div class="bc-name">Alex Morgan</div><div class="bc-title">Senior Product Designer · Acme Corp</div></div>
+                <div class="bc-bottom"><div class="bc-email">alex@acme.com</div><div class="bc-nfc">⊙</div></div>
+            </div>
+            <div class="bc">
+                <div class="bc-chip"><svg viewBox="0 0 16 11" fill="none"><rect x="0.5" y="0.5" width="15" height="10" rx="1.5" stroke="rgba(255,255,255,0.3)"/><rect x="0.5" y="3.5" width="15" height="1" fill="rgba(255,255,255,0.15)"/></svg></div>
+                <div><div class="bc-tag">Work</div><div class="bc-initial">S</div><div class="bc-name">Sarah Chen</div><div class="bc-title">Head of Growth · Startup XYZ</div></div>
+                <div class="bc-bottom"><div class="bc-email">sarah@xyz.io</div><div class="bc-nfc">⊙</div></div>
+            </div>
+            <div class="bc">
+                <div class="bc-chip"><svg viewBox="0 0 16 11" fill="none"><rect x="0.5" y="0.5" width="15" height="10" rx="1.5" stroke="rgba(255,255,255,0.3)"/><rect x="0.5" y="3.5" width="15" height="1" fill="rgba(255,255,255,0.15)"/></svg></div>
+                <div><div class="bc-tag">Freelance</div><div class="bc-initial">J</div><div class="bc-name">James Parker</div><div class="bc-title">Full Stack Engineer · Independent</div></div>
+                <div class="bc-bottom"><div class="bc-email">james@parker.dev</div><div class="bc-nfc">⊙</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-wrap">
+    <div class="marquee-track">
+        <div class="m-item"><div class="m-dot"></div>NFC Sharing</div>
+        <div class="m-item"><div class="m-dot"></div>QR Codes</div>
+        <div class="m-item"><div class="m-dot"></div>AI Scanning</div>
+        <div class="m-item"><div class="m-dot"></div>Team Workspaces</div>
+        <div class="m-item"><div class="m-dot"></div>Real-time Analytics</div>
+        <div class="m-item"><div class="m-dot"></div>CRM Integrations</div>
+        <div class="m-item"><div class="m-dot"></div>Custom Domains</div>
+        <div class="m-item"><div class="m-dot"></div>Privacy Controls</div>
+        <div class="m-item"><div class="m-dot"></div>Instant Links</div>
+        <div class="m-item"><div class="m-dot"></div>50+ Templates</div>
+        <div class="m-item"><div class="m-dot"></div>Cloud Sync</div>
+        <div class="m-item"><div class="m-dot"></div>Smart Follow-ups</div>
+        <div class="m-item"><div class="m-dot"></div>NFC Sharing</div>
+        <div class="m-item"><div class="m-dot"></div>QR Codes</div>
+        <div class="m-item"><div class="m-dot"></div>AI Scanning</div>
+        <div class="m-item"><div class="m-dot"></div>Team Workspaces</div>
+        <div class="m-item"><div class="m-dot"></div>Real-time Analytics</div>
+        <div class="m-item"><div class="m-dot"></div>CRM Integrations</div>
+        <div class="m-item"><div class="m-dot"></div>Custom Domains</div>
+        <div class="m-item"><div class="m-dot"></div>Privacy Controls</div>
+        <div class="m-item"><div class="m-dot"></div>Instant Links</div>
+        <div class="m-item"><div class="m-dot"></div>50+ Templates</div>
+        <div class="m-item"><div class="m-dot"></div>Cloud Sync</div>
+        <div class="m-item"><div class="m-dot"></div>Smart Follow-ups</div>
+    </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<section class="section" id="features">
+    <div class="container">
+        <div class="reveal">
+            <div class="s-eyebrow">Features</div>
+            <h2 class="s-h2">Built for the way<br><em>you actually work</em></h2>
+        </div>
+        <div class="features-grid reveal" id="features-grid">
+            <div class="feat feat-lg" data-feat="0">
+                <div class="feat-icon">✦</div>
+                <div class="feat-title">Beautiful Card Builder</div>
+                <div class="feat-desc">Design cards that actually reflect your brand. 50+ templates, full customization, and your own color system.</div>
+                <div class="feat-list">
+                    <div class="feat-list-row">
+                        <div class="fl-av">A</div>
+                        <div class="fl-info"><div class="fl-name">Alex Morgan</div><div class="fl-role">Product Designer · Acme Corp</div></div>
+                        <div class="fl-status live"></div>
+                    </div>
+                    <div class="feat-list-row">
+                        <div class="fl-av">S</div>
+                        <div class="fl-info"><div class="fl-name">Sarah Chen</div><div class="fl-role">Head of Growth · XYZ</div></div>
+                        <div class="fl-status live"></div>
+                    </div>
+                    <div class="feat-list-row">
+                        <div class="fl-av">J</div>
+                        <div class="fl-info"><div class="fl-name">James Parker</div><div class="fl-role">Engineer · Independent</div></div>
+                        <div class="fl-status"></div>
+                    </div>
                 </div>
             </div>
+            <div class="feat feat-sm" data-feat="1">
+                <div class="feat-icon">◈</div>
+                <div class="feat-title">Analytics</div>
+                <div class="feat-desc">See who views your card, when, and from where.</div>
+                <div class="feat-chart">
+                    <div class="chart-bar" style="height:35%"></div>
+                    <div class="chart-bar" style="height:55%"></div>
+                    <div class="chart-bar" style="height:40%"></div>
+                    <div class="chart-bar hi" style="height:85%"></div>
+                    <div class="chart-bar" style="height:65%"></div>
+                    <div class="chart-bar" style="height:50%"></div>
+                    <div class="chart-bar hi" style="height:90%"></div>
+                </div>
+                <div class="feat-chart-labels">
+                    <div class="chart-label">M</div><div class="chart-label">T</div>
+                    <div class="chart-label">W</div><div class="chart-label">T</div>
+                    <div class="chart-label">F</div><div class="chart-label">S</div>
+                    <div class="chart-label">S</div>
+                </div>
+            </div>
+            <div class="feat feat-sm" data-feat="2">
+                <div class="feat-icon">⊙</div>
+                <div class="feat-title">NFC & QR Sharing</div>
+                <div class="feat-desc">Tap phones or show a code. Sharing your card takes one second.</div>
+            </div>
+            <div class="feat feat-sm" data-feat="3">
+                <div class="feat-icon">⬡</div>
+                <div class="feat-title">AI Card Scanner</div>
+                <div class="feat-desc">Photograph any paper card. Our AI extracts every detail instantly.</div>
+            </div>
+            <div class="feat feat-sm" data-feat="4">
+                <div class="feat-icon">◎</div>
+                <div class="feat-title">Privacy Controls</div>
+                <div class="feat-desc">Show different information to different people.</div>
+            </div>
+            <div class="feat feat-sm" data-feat="5">
+                <div class="feat-icon">⬕</div>
+                <div class="feat-title">Team Workspaces</div>
+                <div class="feat-desc">Keep your whole team on-brand. Manage templates centrally.</div>
+            </div>
+            <div class="feat feat-sm" data-feat="6">
+                <div class="feat-icon">⌁</div>
+                <div class="feat-title">Smart Follow-ups</div>
+                <div class="feat-desc">Never let a connection go cold with smart reminders.</div>
+            </div>
+            <div class="feat feat-sm" data-feat="7">
+                <div class="feat-icon">⊞</div>
+                <div class="feat-title">CRM Sync</div>
+                <div class="feat-desc">New connection? Already a lead in Salesforce. Zero manual entry.</div>
+            </div>
+        </div>
+    </div>
+</section>
 
-            <!-- 3D Card -->
-            <div class="card-3d flex justify-center">
-                <div class="card-inner bg-zinc-900 w-full max-w-md rounded-3xl p-10 shadow-2xl border border-white/10" id="main-card">
-                    <div class="flex justify-between">
-                        <div>
-                            <h3 class="text-3xl font-light">Isabella Moreau</h3>
-                            <p class="text-gray-400">Founder &amp; Creative Director</p>
+<!-- ── HOW IT WORKS ── -->
+<section class="section" id="how">
+    <div class="container">
+        <div class="reveal">
+            <div class="s-eyebrow">How it works</div>
+            <h2 class="s-h2">Running in minutes,<br><em>not hours</em></h2>
+        </div>
+        <div class="how-layout">
+            <div class="steps reveal">
+                <div class="step"><div class="step-n">01</div><div><div class="step-title">Create your card</div><div class="step-desc">Pick a template or build from scratch. Add your details, photo, and links. Takes about three minutes.</div></div></div>
+                <div class="step"><div class="step-n">02</div><div><div class="step-title">Share anywhere</div><div class="step-desc">Tap via NFC, show a QR code, or send your unique link. Works everywhere, no app required on the receiver's end.</div></div></div>
+                <div class="step"><div class="step-n">03</div><div><div class="step-title">Collect & organize</div><div class="step-desc">Scan paper cards or receive digital ones. Every contact is automatically categorized and searchable.</div></div></div>
+                <div class="step"><div class="step-n">04</div><div><div class="step-title">Track and follow up</div><div class="step-desc">See card views, get follow-up reminders, and sync everything to your CRM automatically.</div></div></div>
+            </div>
+            <div class="phone-wrap reveal">
+                <div class="phone" id="source-phone">
+                    <div class="phone-pill"></div>
+                    <div class="phone-screen">
+                        <div class="p-header">My Card</div>
+                        <div class="p-card" id="source-card-el">
+                            <div class="p-card-glow"></div>
+                            <div class="p-av">A</div>
+                            <div class="p-name">Alex Morgan</div>
+                            <div class="p-role">Senior Product Designer · Acme Corp</div>
+                            <div class="p-hr"></div>
+                            <div class="p-row"><div class="p-ico">📧</div><div class="p-txt">alex@acme.com</div></div>
+                            <div class="p-row"><div class="p-ico">📱</div><div class="p-txt">+1 (555) 123-4567</div></div>
+                            <div class="p-row"><div class="p-ico">🔗</div><div class="p-txt">linkedin.com/in/alexm</div></div>
+                            <div class="p-row"><div class="p-ico">🌐</div><div class="p-txt">alexmorgan.design</div></div>
+                            <div class="p-actions">
+                                <div class="p-act">⊙ NFC Share</div>
+                                <div class="p-act">⬡ QR Code</div>
+                                <div class="p-act">📊 Analytics</div>
+                                <div class="p-act">✏️ Edit</div>
+                            </div>
                         </div>
-                        <div class="w-20 h-20 bg-zinc-700 rounded-2xl"></div>
-                    </div>
-                    <div class="mt-16 text-sm space-y-6">
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Last met</span>
-                            <span class="text-right">Milan Design Week<br><span class="text-gray-400">April 2026</span></span>
+                        <div class="p-card" style="padding:14px 16px;margin-bottom:0;">
+                            <div style="font-size:10px;color:rgba(255,255,255,0.3);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">Recent Views</div>
+                            <div style="display:flex;flex-direction:column;gap:7px;">
+                                <div style="display:flex;align-items:center;gap:9px;">
+                                    <div style="width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">M</div>
+                                    <div style="flex:1;"><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.7);">Maria Santos</div><div style="font-size:10px;color:rgba(255,255,255,0.25);">2 min ago · San Francisco</div></div>
+                                    <div style="width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px rgba(74,222,128,0.5);flex-shrink:0;"></div>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:9px;">
+                                    <div style="width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">R</div>
+                                    <div style="flex:1;"><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.7);">Ryan Walsh</div><div style="font-size:10px;color:rgba(255,255,255,0.25);">1 hr ago · New York</div></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <button class="mt-12 w-full py-6 border border-white/20 hover:border-white rounded-2xl text-sm tracking-widest transition">
-                        SAVE TO CONTACTS
-                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Features -->
-    <section id="features" class="py-32 bg-zinc-950">
-        <div class="max-w-7xl mx-auto px-8">
-            <h2 class="text-5xl luxury-font font-light text-center mb-20">The new standard of connection</h2>
-            
-            <div class="grid md:grid-cols-3 gap-16">
-                <div>
-                    <h4 class="text-lg tracking-widest mb-4 text-gray-400">INTELLIGENT MEMORY</h4>
-                    <h3 class="text-3xl font-light mb-6">Never forget the context</h3>
-                    <p class="text-gray-400">Automatically records location, date, and notes from every exchange.</p>
-                </div>
-                <div>
-                    <h4 class="text-lg tracking-widest mb-4 text-gray-400">ONE TAP EXCHANGE</h4>
-                    <h3 class="text-3xl font-light mb-6">Instant. Elegant.</h3>
-                    <p class="text-gray-400">NFC tap or QR scan instantly saves your full contact and meeting memory.</p>
-                </div>
-                <div>
-                    <h4 class="text-lg tracking-widest mb-4 text-gray-400">TIMELESS DESIGN</h4>
-                    <h3 class="text-3xl font-light mb-6">Crafted for legacy</h3>
-                    <p class="text-gray-400">Minimal, luxurious templates used by founders, executives, and visionaries.</p>
+<!-- ── INTEGRATIONS ── -->
+<section class="section" id="integrations">
+    <div class="container">
+        <div class="int-layout">
+            <div class="reveal">
+                <div class="s-eyebrow">Integrations</div>
+                <h2 class="s-h2">Fits into your<br><em>existing stack</em></h2>
+                <p class="s-p" style="max-width:380px;margin-bottom:32px;">CardStack connects with the tools your team already uses.</p>
+                <a href="#" class="btn-dark">Browse all integrations →</a>
+            </div>
+            <div class="int-grid reveal">
+                <div class="int-item"><div class="int-icon">📧</div><div class="int-name">Gmail</div></div>
+                <div class="int-item"><div class="int-icon">💼</div><div class="int-name">LinkedIn</div></div>
+                <div class="int-item"><div class="int-icon">☁️</div><div class="int-name">Salesforce</div></div>
+                <div class="int-item"><div class="int-icon">🟠</div><div class="int-name">HubSpot</div></div>
+                <div class="int-item"><div class="int-icon">💬</div><div class="int-name">Slack</div></div>
+                <div class="int-item"><div class="int-icon">📅</div><div class="int-name">Calendly</div></div>
+                <div class="int-item"><div class="int-icon">🗂️</div><div class="int-name">Notion</div></div>
+                <div class="int-item" style="opacity:0.4;"><div class="int-icon">＋</div><div class="int-name">More soon</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="section" id="pricing">
+    <div class="container">
+        <div class="reveal" style="text-align:center;">
+            <div class="s-eyebrow" style="text-align:center;">Pricing</div>
+            <h2 class="s-h2" style="text-align:center;">Simple pricing,<br><em>serious value</em></h2>
+            <p class="s-p" style="max-width:400px;margin:0 auto;">No hidden fees. Start free and scale when you're ready.</p>
+            <div class="pricing-toggle-wrap">
+                <div class="ptoggle">
+                    <button class="ptbtn active" onclick="switchBilling(this,'monthly')">Monthly</button>
+                    <button class="ptbtn" onclick="switchBilling(this,'yearly')">Yearly <span class="save-tag">–40%</span></button>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Templates -->
-    <section id="templates" class="py-32 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-8">
-            <h2 class="text-5xl luxury-font font-light text-center mb-16">Signature Collections</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group bg-zinc-900 rounded-3xl overflow-hidden">
-                    <div class="h-96 bg-zinc-800 flex items-center justify-center text-6xl font-light">Noir</div>
-                    <div class="p-8">
-                        <h4 class="text-xl">Noir Collection</h4>
-                        <p class="text-gray-400 text-sm">For those who value presence and power.</p>
-                    </div>
-                </div>
-                <div class="group bg-zinc-900 rounded-3xl overflow-hidden">
-                    <div class="h-96 bg-gradient-to-br from-amber-900 to-zinc-900 flex items-center justify-center text-6xl font-light">Luxe</div>
-                    <div class="p-8">
-                        <h4 class="text-xl">Luxe Collection</h4>
-                        <p class="text-gray-400 text-sm">Subtle elegance in every detail.</p>
-                    </div>
-                </div>
-                <div class="group bg-zinc-900 rounded-3xl overflow-hidden">
-                    <div class="h-96 bg-zinc-950 flex items-center justify-center text-6xl font-light">Pure</div>
-                    <div class="p-8">
-                        <h4 class="text-xl">Pure Collection</h4>
-                        <p class="text-gray-400 text-sm">Minimalism at its finest.</p>
-                    </div>
-                </div>
+        <div class="pricing-cards reveal">
+            <div class="pc">
+                <div class="pc-plan">Starter</div>
+                <div class="pc-price"><sup>$</sup>0</div>
+                <div class="pc-per">per month, free forever</div>
+                <div class="pc-desc">For individuals exploring digital business cards.</div>
+                <a href="#" class="pc-btn-dark">Get started free</a>
+                <div class="pc-divider"></div>
+                <ul class="pc-features">
+                    <li><span class="ck">✓</span>1 digital business card</li>
+                    <li><span class="ck">✓</span>QR code sharing</li>
+                    <li><span class="ck">✓</span>50 card scans / month</li>
+                    <li><span class="ck">✓</span>Basic analytics</li>
+                    <li><span class="ck">✓</span>5 templates</li>
+                </ul>
+            </div>
+            <div class="pc popular">
+                <div class="popular-label">Most Popular</div>
+                <div class="pc-plan">Pro</div>
+                <div class="pc-price" id="price-pro"><sup>$</sup>12</div>
+                <div class="pc-per" id="per-pro">per month, billed monthly</div>
+                <div class="pc-desc">For professionals who network seriously.</div>
+                <a href="#" class="pc-btn-white">Get started →</a>
+                <div class="pc-divider"></div>
+                <ul class="pc-features">
+                    <li><span class="ck">✓</span>5 digital business cards</li>
+                    <li><span class="ck">✓</span>NFC + QR sharing</li>
+                    <li><span class="ck">✓</span>Unlimited AI scanning</li>
+                    <li><span class="ck">✓</span>Full analytics & insights</li>
+                    <li><span class="ck">✓</span>50+ premium templates</li>
+                    <li><span class="ck">✓</span>CRM integrations</li>
+                </ul>
+            </div>
+            <div class="pc">
+                <div class="pc-plan">Business</div>
+                <div class="pc-price" id="price-biz"><sup>$</sup>49</div>
+                <div class="pc-per" id="per-biz">per month, billed monthly</div>
+                <div class="pc-desc">For teams that need branded cards and central management.</div>
+                <a href="#" class="pc-btn-dark">Contact sales</a>
+                <div class="pc-divider"></div>
+                <ul class="pc-features">
+                    <li><span class="ck">✓</span>Unlimited cards</li>
+                    <li><span class="ck">✓</span>Team workspaces</li>
+                    <li><span class="ck">✓</span>Brand kit & templates</li>
+                    <li><span class="ck">✓</span>Admin controls & SSO</li>
+                    <li><span class="ck">✓</span>API access</li>
+                    <li><span class="ck">✓</span>Custom domain</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Experience -->
-    <section id="experience" class="py-32 bg-zinc-950">
-        <div class="max-w-5xl mx-auto px-8 text-center">
-            <h2 class="text-6xl luxury-font font-light mb-8">One card.<br>Multiple realities.</h2>
-            <p class="max-w-2xl mx-auto text-gray-400 text-lg">
-                Share via NFC tap, dynamic QR code, beautiful link, or Apple Wallet. 
-                Every interaction is tracked with grace and intelligence.
-            </p>
+<!-- ── TESTIMONIALS ── -->
+<section class="section" id="testimonials">
+    <div class="container">
+        <div class="reveal" style="text-align:center;">
+            <div class="s-eyebrow" style="text-align:center;">Testimonials</div>
+            <h2 class="s-h2" style="text-align:center;">Trusted by people<br><em>who get things done</em></h2>
         </div>
-    </section>
+        <div class="testi-grid">
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"CardStack completely transformed how I network at conferences. The analytics showing who viewed my card are a game-changer."</div><div class="testi-author"><div class="t-av">MR</div><div><div class="t-name">Marcus Reed</div><div class="t-role">VP of Sales · TechVentures</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"Our entire team uses CardStack now. The Salesforce sync alone saves us hours every week."</div><div class="testi-author"><div class="t-av">JL</div><div><div class="t-name">Jessica Liu</div><div class="t-role">Head of Marketing · Bloom Co.</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"The AI scanning feature is honestly witchcraft. 200 cards organized in minutes. Nothing else comes close."</div><div class="testi-author"><div class="t-av">DK</div><div><div class="t-name">David Kim</div><div class="t-role">Founder · NovaSpark</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"CardStack lets me have different cards for different clients. Same tool, different impressions."</div><div class="testi-author"><div class="t-av">AP</div><div><div class="t-name">Anya Patel</div><div class="t-role">Brand Designer · Freelance</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"CardStack is the only one that feels genuinely premium. Everything is just right."</div><div class="testi-author"><div class="t-av">TW</div><div><div class="t-name">Tom Willows</div><div class="t-role">Real Estate Agent · Meridian</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"Every time someone scans my card, a new lead appears in our CRM. The ROI was visible within the first week."</div><div class="testi-author"><div class="t-av">RN</div><div><div class="t-name">Rachel Nguyen</div><div class="t-role">Sales Director · CloudBase</div></div></div></div>
+        </div>
+    </div>
+</section>
 
-    <!-- Final CTA -->
-    <section class="py-32 border-t border-white/10">
-        <div class="max-w-4xl mx-auto text-center px-6">
-            <h2 class="text-6xl luxury-font font-light mb-6">Begin your legacy of meaningful connections</h2>
-            <a href="#" class="inline-block mt-8 px-16 py-7 border border-white text-lg tracking-widest hover:bg-white hover:text-black transition-all duration-500">
-                CREATE YOUR ELEVÉ CARD
+<!-- ── CTA ── -->
+<section class="cta-section">
+    <div class="cta-bg"></div>
+    <div class="container" style="position:relative;z-index:1;">
+        <div class="reveal">
+            <h2 class="cta-h2">Your network.<br><em>Finally organized.</em></h2>
+            <p class="cta-sub">Join 40,000 professionals who've upgraded their first impression. Free to start.</p>
+            <div class="cta-actions">
+                <a href="#" class="btn-white">Create your card — it's free</a>
+                <a href="#" class="btn-dark">Book a demo</a>
+            </div>
+            <p class="cta-fine">✓ Free forever plan &nbsp;&nbsp; ✓ No credit card &nbsp;&nbsp; ✓ Cancel anytime</p>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-top">
+        <div>
+            <a href="#" class="ft-brand-logo">
+                <div class="nav-logo-mark"><svg viewBox="0 0 16 16" fill="none" width="16" height="16"><rect x="1" y="1" width="6" height="6" rx="1.5" fill="#000"/><rect x="9" y="1" width="6" height="6" rx="1.5" fill="#000"/><rect x="1" y="9" width="6" height="6" rx="1.5" fill="#000"/><rect x="9" y="9" width="6" height="4" rx="1.5" fill="#000" opacity="0.4"/></svg></div>
+                <span class="nav-logo-text">CardStack</span>
             </a>
+            <p class="ft-tagline">The modern OS for business cards and professional networking.</p>
+            <div class="ft-socials">
+                <a href="#" class="ft-social">𝕏</a>
+                <a href="#" class="ft-social">in</a>
+                <a href="#" class="ft-social">▶</a>
+                <a href="#" class="ft-social">◉</a>
+            </div>
         </div>
-    </section>
+        <div><div class="ft-col-title">Product</div><ul class="ft-links"><li><a href="#">Features</a></li><li><a href="#">Templates</a></li><li><a href="#">Integrations</a></li><li><a href="#">Pricing</a></li><li><a href="#">Changelog</a></li></ul></div>
+        <div><div class="ft-col-title">Solutions</div><ul class="ft-links"><li><a href="#">For Individuals</a></li><li><a href="#">For Teams</a></li><li><a href="#">For Enterprise</a></li><li><a href="#">For Events</a></li></ul></div>
+        <div><div class="ft-col-title">Resources</div><ul class="ft-links"><li><a href="#">Documentation</a></li><li><a href="#">Blog</a></li><li><a href="#">API Reference</a></li><li><a href="#">Community</a></li></ul></div>
+        <div><div class="ft-col-title">Company</div><ul class="ft-links"><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Press Kit</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+        <div class="fb-copy">© 2024 CardStack, Inc. All rights reserved.</div>
+        <div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><a href="#">GDPR</a></div>
+    </div>
+</footer>
 
-    <footer class="border-t border-white/10 py-16 text-center text-gray-500 text-sm">
-        © 2026 Elevé • Digital Business Cards for the Discerning
-    </footer>
+<script>
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════ */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revealObs.unobserve(e.target); }});
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
 
-    <script>
-        // Subtle GSAP animation on scroll
-        gsap.from("#main-card", {
-            y: 100,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power3.out"
+document.querySelectorAll('.features-grid .feat, .testi-grid .testi, .pricing-cards .pc').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+});
+
+/* ═══════════════════════════════════════
+   PRICING
+═══════════════════════════════════════ */
+const billingData = {
+    monthly: { pro:'12', biz:'49', perPro:'per month, billed monthly', perBiz:'per month, billed monthly' },
+    yearly:  { pro:'7',  biz:'29', perPro:'per month, billed yearly',  perBiz:'per month, billed yearly'  }
+};
+function switchBilling(btn, period) {
+    document.querySelectorAll('.ptbtn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const d = billingData[period];
+    document.getElementById('price-pro').innerHTML = '<sup>$</sup>' + d.pro;
+    document.getElementById('price-biz').innerHTML = '<sup>$</sup>' + d.biz;
+    document.getElementById('per-pro').textContent  = d.perPro;
+    document.getElementById('per-biz').textContent  = d.perBiz;
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+    document.getElementById('main-nav').style.borderBottomColor =
+        window.scrollY > 30 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.08)';
+}, { passive: true });
+
+document.querySelectorAll('.s-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.s-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+/* BC TILT */
+document.querySelectorAll('.bc').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width  - 0.5;
+        const y = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.transform  = `translateY(-3px) rotateX(${-y*7}deg) rotateY(${x*7}deg)`;
+        card.style.transition = 'transform 0.05s ease';
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform  = '';
+        card.style.transition = 'transform 0.4s ease';
+    });
+});
+
+/* ═══════════════════════════════════════
+   COUNTER
+═══════════════════════════════════════ */
+function animateCounter(el, target, suffix, isDecimal) {
+    const duration = 1800, start = performance.now();
+    function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (isDecimal ? (target * e).toFixed(1) : Math.floor(target * e)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+}
+const numObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('.hero-num-val[data-target]').forEach(el => {
+            animateCounter(el, parseFloat(el.dataset.target), el.dataset.suffix || '', el.dataset.target.includes('.'));
         });
-    </script>
+        numObs.unobserve(e.target);
+    });
+}, { threshold: 0.5 });
+const numSection = document.querySelector('.hero-numbers');
+if (numSection) numObs.observe(numSection);
+
+
+/* ═══════════════════════════════════════════════════════════
+   ✈️  SCROLL-DRIVEN FLYING CARD  +  ENERGY LINES
+   ─────────────────────────────────────────────────────────
+   How it works:
+   1. We wait until the features section is in scroll range.
+   2. Progress = how far user has scrolled THROUGH features section (0→1).
+   3. The card follows a smooth Catmull-Rom spline through every
+      feature card center (in viewport coords, updated every frame).
+   4. Energy lines are drawn from each feature card to the flying card,
+      with animated dashes flowing toward the card.
+   5. Canvas is a real <canvas> element — no SVG ctx bug.
+═══════════════════════════════════════════════════════════ */
+(function ScrollCardAnimation() {
+
+    if (window.innerWidth < 860) return;
+
+    /* ── Elements ── */
+    const flyCard     = document.getElementById('flying-card');
+    const canvas      = document.getElementById('energy-canvas');
+    const sourcePhone = document.getElementById('source-phone');
+    const sourceCard  = document.getElementById('source-card-el');
+    const featSection = document.getElementById('features');
+
+    if (!flyCard || !canvas || !featSection) return;
+
+    /* ── Canvas setup ── */
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+
+    /* ── Catmull-Rom spline ── */
+    function catmullRomPoint(p0, p1, p2, p3, t) {
+        const t2 = t * t, t3 = t2 * t;
+        return {
+            x: 0.5 * ((2*p1.x) + (-p0.x+p2.x)*t + (2*p0.x-5*p1.x+4*p2.x-p3.x)*t2 + (-p0.x+3*p1.x-3*p2.x+p3.x)*t3),
+            y: 0.5 * ((2*p1.y) + (-p0.y+p2.y)*t + (2*p0.y-5*p1.y+4*p2.y-p3.y)*t2 + (-p0.y+3*p1.y-3*p2.y+p3.y)*t3)
+        };
+    }
+
+    /* Evaluate position along a full spline given global t ∈ [0,1] */
+    function splinePosition(pts, t) {
+        if (pts.length < 2) return pts[0] || { x: 0, y: 0 };
+        const n      = pts.length - 1;
+        const scaled = t * n;
+        const i      = Math.min(Math.floor(scaled), n - 1);
+        const lt     = scaled - i;
+        const p0 = pts[Math.max(i - 1, 0)];
+        const p1 = pts[i];
+        const p2 = pts[Math.min(i + 1, n)];
+        const p3 = pts[Math.min(i + 2, n)];
+        return catmullRomPoint(p0, p1, p2, p3, lt);
+    }
+
+    /* ── Get center of any element in VIEWPORT coords ── */
+    function vCenter(el) {
+        const r = el.getBoundingClientRect();
+        return { x: r.left + r.width * 0.5, y: r.top + r.height * 0.5 };
+    }
+
+    /* ── Collect feature elements ── */
+    function getFeatEls() {
+        return Array.from(document.querySelectorAll('[data-feat]'));
+    }
+
+    /* ── Scroll progress through the features section ── */
+    function getProgress() {
+        const r     = featSection.getBoundingClientRect();
+        const vh    = window.innerHeight;
+        /* Start when top of section hits bottom of viewport */
+        /* End when bottom of section leaves top of viewport */
+        const start = vh;            /* r.top === vh  → progress 0   */
+        const end   = -r.height;    /* r.top === -h  → progress 1   */
+        const raw   = (r.top - start) / (end - start);
+        return Math.max(0, Math.min(1, raw));
+    }
+
+    /* ── Animated dash offset for flowing energy lines ── */
+    let dashOffset = 0;
+    let lastTime   = 0;
+
+    /* ── Draw glowing energy line ── */
+    function drawEnergyLine(ax, ay, bx, by, alpha, time) {
+        /* outer glow */
+        ctx.save();
+        ctx.globalAlpha = alpha * 0.18;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth   = 8;
+        ctx.filter      = 'blur(4px)';
+        ctx.beginPath();
+        ctx.moveTo(ax, ay);
+        ctx.lineTo(bx, by);
+        ctx.stroke();
+        ctx.filter = 'none';
+        ctx.restore();
+
+        /* mid glow */
+        ctx.save();
+        ctx.globalAlpha = alpha * 0.35;
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth   = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(ax, ay);
+        ctx.lineTo(bx, by);
+        ctx.stroke();
+        ctx.restore();
+
+        /* animated dashes flowing toward card */
+        const dist  = Math.hypot(bx - ax, by - ay);
+        const gap   = 18;
+        const dash  = 8;
+        const speed = 60; /* px per second */
+        const offset = ((time * speed) % (dash + gap));
+
+        ctx.save();
+        ctx.globalAlpha  = alpha * 0.9;
+        ctx.strokeStyle  = '#ffffff';
+        ctx.lineWidth    = 1.5;
+        ctx.setLineDash([dash, gap]);
+        ctx.lineDashOffset = -offset;
+        ctx.beginPath();
+        ctx.moveTo(ax, ay);
+        ctx.lineTo(bx, by);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+
+        /* bright dot at feature card end */
+        ctx.save();
+        ctx.globalAlpha = alpha * 0.8;
+        const grd = ctx.createRadialGradient(ax, ay, 0, ax, ay, 10);
+        grd.addColorStop(0,   'rgba(255,255,255,0.9)');
+        grd.addColorStop(0.5, 'rgba(255,255,255,0.3)');
+        grd.addColorStop(1,   'rgba(255,255,255,0)');
+        ctx.fillStyle = grd;
+        ctx.beginPath();
+        ctx.arc(ax, ay, 10, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    /* ── Draw a halo around the flying card ── */
+    function drawCardHalo(cx, cy, alpha) {
+        ctx.save();
+        ctx.globalAlpha = alpha * 0.5;
+        const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 80);
+        grd.addColorStop(0,   'rgba(255,255,255,0.15)');
+        grd.addColorStop(0.5, 'rgba(255,255,255,0.05)');
+        grd.addColorStop(1,   'rgba(255,255,255,0)');
+        ctx.fillStyle = grd;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 80, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    /* ── Card dimensions ── */
+    const CARD_W = 190;
+    const CARD_H = 120;
+
+    /* ── Main animation loop ── */
+    let rafId = null;
+    let time  = 0;
+
+    function frame(ts) {
+        const dt = Math.min((ts - lastTime) / 1000, 0.05);
+        lastTime = ts;
+        time    += dt;
+
+        const progress = getProgress();
+        const featEls  = getFeatEls();
+
+        /* Clear canvas every frame */
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (progress <= 0 || progress >= 1 || featEls.length === 0) {
+            /* Hide card outside zone */
+            flyCard.style.opacity   = '0';
+            flyCard.style.transform = 'translate(-9999px,-9999px)';
+            /* Remove glow from all features */
+            featEls.forEach(el => el.classList.remove('energy-active'));
+            /* Remove phone glow */
+            if (sourcePhone) sourcePhone.classList.remove('source-active');
+            rafId = requestAnimationFrame(frame);
+            return;
+        }
+
+        /* Build spline waypoints in viewport coords:
+           Start  = source phone card center
+           Middle = each feature card center in order
+           End    = source phone card center (back into phone at bottom — 
+                    or if you have a dest phone, use that) */
+        const srcCenter = vCenter(sourceCard);
+        const waypoints = [srcCenter];
+        featEls.forEach(el => waypoints.push(vCenter(el)));
+        waypoints.push(srcCenter); /* loop back toward phone */
+
+        /* Card position */
+        const pos = splinePosition(waypoints, progress);
+        const px  = pos.x - CARD_W / 2;
+        const py  = pos.y - CARD_H / 2;
+
+        /* Rotation: follow tangent */
+        const tNext = Math.min(progress + 0.005, 1);
+        const posN  = splinePosition(waypoints, tNext);
+        const angle = Math.atan2(posN.y - pos.y, posN.x - pos.x) * (180 / Math.PI) * 0.25;
+
+        /* Scale: slightly larger mid-journey */
+        const scaleMid = 0.85 + Math.sin(progress * Math.PI) * 0.25;
+
+        /* Apply to DOM element */
+        flyCard.style.opacity   = '1';
+        flyCard.style.transform =
+            `translate(${px}px, ${py}px) rotate(${angle}deg) scale(${scaleMid})`;
+
+        /* Draw halo under card */
+        drawCardHalo(pos.x, pos.y, 0.8);
+
+        /* Draw energy lines from nearby features */
+        featEls.forEach((el, i) => {
+            const fc   = vCenter(el);
+            const dist = Math.hypot(fc.x - pos.x, fc.y - pos.y);
+
+            /* proximity threshold — features within 500px get lines */
+            const maxDist = 500;
+            if (dist > maxDist) {
+                el.classList.remove('energy-active');
+                return;
+            }
+
+            const proximity = 1 - dist / maxDist;
+            /* Boost alpha for very close features */
+            const alpha = Math.pow(proximity, 1.5);
+
+            drawEnergyLine(fc.x, fc.y, pos.x, pos.y, alpha, time);
+
+            /* Glow feature card */
+            if (alpha > 0.25) {
+                el.classList.add('energy-active');
+            } else {
+                el.classList.remove('energy-active');
+            }
+        });
+
+        /* Phone glow when card is near source */
+        if (sourcePhone) {
+            const phoneDist = Math.hypot(srcCenter.x - pos.x, srcCenter.y - pos.y);
+            if (phoneDist < 200) {
+                sourcePhone.classList.add('source-active');
+            } else {
+                sourcePhone.classList.remove('source-active');
+            }
+        }
+
+        rafId = requestAnimationFrame(frame);
+    }
+
+    /* ── Start the loop ── */
+    lastTime = performance.now();
+    rafId    = requestAnimationFrame(frame);
+
+    /* ── Handle resize: just let frame() recalculate vCenter ── */
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+    }, { passive: true });
+
+})();
+</script>
 </body>
 </html>
