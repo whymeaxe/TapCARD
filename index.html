@@ -15,7 +15,6 @@
             --black-2: #111111;
             --black-3: #1a1a1a;
             --black-4: #222222;
-            --black-5: #2a2a2a;
             --white: #ffffff;
             --white-80: rgba(255,255,255,0.8);
             --white-60: rgba(255,255,255,0.6);
@@ -52,578 +51,325 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 32px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.75);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--border);
             transition: border-color 0.3s;
         }
-
-        .nav-logo {
-            display: flex; align-items: center; gap: 9px;
-            text-decoration: none; color: var(--white);
-        }
-        .nav-logo-mark {
-            width: 28px; height: 28px; background: var(--white);
-            border-radius: 7px; display: flex; align-items: center; justify-content: center;
-        }
+        .nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--white); }
+        .nav-logo-mark { width: 28px; height: 28px; background: var(--white); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
         .nav-logo-mark svg { width: 16px; height: 16px; }
         .nav-logo-text { font-size: 15px; font-weight: 600; letter-spacing: -0.3px; }
-
         .nav-center { display: flex; align-items: center; gap: 2px; }
-        .nav-center a {
-            color: var(--white-40); text-decoration: none; font-size: 13.5px;
-            font-weight: 450; padding: 6px 12px; border-radius: 6px; transition: color 0.15s;
-        }
+        .nav-center a { color: var(--white-40); text-decoration: none; font-size: 13.5px; font-weight: 450; padding: 6px 12px; border-radius: 6px; transition: color 0.15s; }
         .nav-center a:hover { color: var(--white); }
-
         .nav-right { display: flex; align-items: center; gap: 8px; }
-        .nav-btn-ghost {
-            color: var(--white-60); font-size: 13.5px; font-weight: 500;
-            padding: 7px 14px; border-radius: 7px; background: none; border: none;
-            cursor: pointer; transition: color 0.15s; text-decoration: none;
-        }
+        .nav-btn-ghost { color: var(--white-60); font-size: 13.5px; font-weight: 500; padding: 7px 14px; border-radius: 7px; background: none; border: none; cursor: pointer; transition: color 0.15s; text-decoration: none; }
         .nav-btn-ghost:hover { color: var(--white); }
-        .nav-btn-primary {
-            background: var(--white); color: var(--black); font-size: 13px; font-weight: 600;
-            padding: 7px 16px; border-radius: 7px; border: none; cursor: pointer;
-            transition: opacity 0.15s; text-decoration: none; letter-spacing: -0.2px;
-        }
+        .nav-btn-primary { background: var(--white); color: var(--black); font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 7px; border: none; cursor: pointer; transition: opacity 0.15s; text-decoration: none; letter-spacing: -0.2px; }
         .nav-btn-primary:hover { opacity: 0.88; }
 
         /* ── HERO ── */
-        .hero {
-            min-height: 100vh; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; text-align: center;
-            padding: 120px 32px 80px; position: relative;
-        }
-        .hero-noise {
-            position: absolute; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-            pointer-events: none; opacity: 0.4;
-        }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 7px;
-            border: 1px solid var(--border); border-radius: 100px;
-            padding: 5px 14px 5px 8px; font-size: 12px; font-weight: 500;
-            color: var(--white-60); margin-bottom: 36px; background: var(--white-04);
-            animation: fadeUp 0.6s ease both;
-        }
-        .hero-badge-dot {
-            width: 18px; height: 18px; border-radius: 5px; background: var(--white-10);
-            display: flex; align-items: center; justify-content: center; font-size: 10px;
-        }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 32px 80px; position: relative; }
+        .hero-noise { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; opacity: 0.4; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--border); border-radius: 100px; padding: 5px 14px 5px 8px; font-size: 12px; font-weight: 500; color: var(--white-60); margin-bottom: 36px; background: var(--white-04); animation: fadeUp 0.6s ease both; }
+        .hero-badge-dot { width: 18px; height: 18px; border-radius: 5px; background: var(--white-10); display: flex; align-items: center; justify-content: center; font-size: 10px; }
         .hero-badge span { color: var(--white-80); }
-
-        .hero-h1 {
-            font-size: clamp(52px, 8vw, 96px); font-weight: 800; line-height: 1.02;
-            letter-spacing: -4px; margin-bottom: 22px; max-width: 860px;
-            animation: fadeUp 0.7s ease 0.08s both; color: var(--white);
-        }
+        .hero-h1 { font-size: clamp(42px, 8vw, 96px); font-weight: 800; line-height: 1.02; letter-spacing: -3px; margin-bottom: 22px; max-width: 860px; animation: fadeUp 0.7s ease 0.08s both; color: var(--white); }
         .hero-h1 em { font-style: normal; color: var(--white-40); }
-
-        .hero-sub {
-            font-size: 17px; color: var(--white-40); max-width: 440px; line-height: 1.7;
-            margin-bottom: 44px; animation: fadeUp 0.7s ease 0.16s both; font-weight: 400;
-        }
-        .hero-actions {
-            display: flex; align-items: center; gap: 12px;
-            animation: fadeUp 0.7s ease 0.24s both; flex-wrap: wrap; justify-content: center;
-        }
-        .btn-white {
-            background: var(--white); color: var(--black); font-size: 14px; font-weight: 650;
-            padding: 12px 24px; border-radius: 9px; border: none; cursor: pointer;
-            text-decoration: none; letter-spacing: -0.3px; transition: opacity 0.15s;
-            display: inline-flex; align-items: center; gap: 6px;
-        }
+        .hero-sub { font-size: 16px; color: var(--white-40); max-width: 440px; line-height: 1.7; margin-bottom: 44px; animation: fadeUp 0.7s ease 0.16s both; font-weight: 400; }
+        .hero-actions { display: flex; align-items: center; gap: 12px; animation: fadeUp 0.7s ease 0.24s both; flex-wrap: wrap; justify-content: center; }
+        .btn-white { background: var(--white); color: var(--black); font-size: 14px; font-weight: 650; padding: 12px 24px; border-radius: 9px; border: none; cursor: pointer; text-decoration: none; letter-spacing: -0.3px; transition: opacity 0.15s; display: inline-flex; align-items: center; gap: 6px; }
         .btn-white:hover { opacity: 0.88; }
-        .btn-dark {
-            background: var(--white-06); color: var(--white-80); font-size: 14px; font-weight: 500;
-            padding: 12px 24px; border-radius: 9px; border: 1px solid var(--border);
-            cursor: pointer; text-decoration: none; transition: all 0.15s;
-            display: inline-flex; align-items: center; gap: 8px;
-        }
+        .btn-dark { background: var(--white-06); color: var(--white-80); font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 9px; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px; }
         .btn-dark:hover { background: var(--white-10); border-color: var(--border-hover); color: var(--white); }
-
-        .hero-numbers {
-            display: flex; align-items: center; gap: 0;
-            margin-top: 72px; animation: fadeUp 0.7s ease 0.32s both;
-        }
-        .hero-num-item {
-            padding: 0 40px; border-right: 1px solid var(--border); text-align: center;
-        }
+        .hero-numbers { display: flex; align-items: center; margin-top: 72px; animation: fadeUp 0.7s ease 0.32s both; flex-wrap: wrap; justify-content: center; }
+        .hero-num-item { padding: 0 32px; border-right: 1px solid var(--border); text-align: center; }
         .hero-num-item:first-child { padding-left: 0; }
         .hero-num-item:last-child { border-right: none; padding-right: 0; }
-        .hero-num-val {
-            font-size: 28px; font-weight: 750; letter-spacing: -1.5px;
-            color: var(--white); line-height: 1; margin-bottom: 5px;
-        }
+        .hero-num-val { font-size: 26px; font-weight: 750; letter-spacing: -1.5px; color: var(--white); line-height: 1; margin-bottom: 5px; }
         .hero-num-label { font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 400; }
 
         /* ── SHOWCASE ── */
         .showcase { padding: 0 32px 120px; animation: fadeUp 0.8s ease 0.4s both; }
-        .showcase-inner {
-            max-width: 1100px; margin: 0 auto; background: var(--black-1);
-            border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
-        }
-        .showcase-bar {
-            display: flex; align-items: center; gap: 14px; padding: 14px 20px;
-            border-bottom: 1px solid var(--border); background: var(--black-2);
-        }
+        .showcase-inner { max-width: 1100px; margin: 0 auto; background: var(--black-1); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+        .showcase-bar { display: flex; align-items: center; gap: 14px; padding: 14px 20px; border-bottom: 1px solid var(--border); background: var(--black-2); }
         .s-dots { display: flex; gap: 6px; }
-        .s-dot { width: 11px; height: 11px; border-radius: 50%; }
-        .s-dot.r { background: #3a3a3a; }
-        .s-dot.y { background: #3a3a3a; }
-        .s-dot.g { background: #3a3a3a; }
+        .s-dot { width: 11px; height: 11px; border-radius: 50%; background: #3a3a3a; }
         .s-tabs { display: flex; gap: 2px; }
-        .s-tab {
-            padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 500;
-            color: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.15s;
-        }
+        .s-tab { padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.15s; }
         .s-tab.active { background: var(--white-10); color: var(--white-80); }
-        .s-tab:hover:not(.active) { color: var(--white-60); }
-        .showcase-body {
-            padding: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
-        }
-        .bc {
-            border-radius: 14px; padding: 26px; position: relative; overflow: hidden;
-            cursor: pointer; transition: transform 0.25s ease; min-height: 190px;
-            display: flex; flex-direction: column; justify-content: space-between;
-            border: 1px solid var(--border); background: var(--black-2);
-        }
+        .showcase-body { padding: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        .bc { border-radius: 14px; padding: 26px; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.25s ease; min-height: 190px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--border); background: var(--black-2); }
         .bc:hover { transform: translateY(-3px); }
-        .bc-chip {
-            position: absolute; top: 18px; right: 18px; width: 28px; height: 20px;
-            border-radius: 4px; background: var(--white-10); border: 1px solid var(--white-10);
-            display: flex; align-items: center; justify-content: center;
-        }
+        .bc-chip { position: absolute; top: 18px; right: 18px; width: 28px; height: 20px; border-radius: 4px; background: var(--white-10); border: 1px solid var(--white-10); display: flex; align-items: center; justify-content: center; }
         .bc-chip svg { width: 16px; height: 11px; opacity: 0.4; }
-        .bc-tag {
-            font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
-            color: rgba(255,255,255,0.3); margin-bottom: 20px;
-        }
-        .bc-initial {
-            width: 38px; height: 38px; border-radius: 10px; background: var(--white-10);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 14px;
-            border: 1px solid var(--white-10);
-        }
+        .bc-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+        .bc-initial { width: 38px; height: 38px; border-radius: 10px; background: var(--white-10); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 14px; border: 1px solid var(--white-10); }
         .bc-name { font-size: 15px; font-weight: 650; color: var(--white); letter-spacing: -0.4px; margin-bottom: 2px; }
         .bc-title { font-size: 11.5px; color: var(--white-40); font-weight: 400; }
-        .bc-bottom {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border);
-        }
+        .bc-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); }
         .bc-email { font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; }
-        .bc-nfc {
-            width: 24px; height: 24px; border-radius: 6px; background: var(--white-06);
-            border: 1px solid var(--border); display: flex; align-items: center;
-            justify-content: center; font-size: 11px;
-        }
+        .bc-nfc { width: 24px; height: 24px; border-radius: 6px; background: var(--white-06); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; }
 
         /* ── MARQUEE ── */
-        .marquee-wrap {
-            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-            background: var(--black-1); overflow: hidden; padding: 18px 0;
-        }
-        .marquee-track {
-            display: flex; animation: ticker 30s linear infinite; width: max-content;
-        }
-        .m-item {
-            display: flex; align-items: center; gap: 10px; padding: 0 36px;
-            border-right: 1px solid var(--border); font-size: 13px; font-weight: 500;
-            color: var(--white-40); white-space: nowrap;
-        }
+        .marquee-wrap { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--black-1); overflow: hidden; padding: 18px 0; }
+        .marquee-track { display: flex; animation: ticker 30s linear infinite; width: max-content; }
+        .m-item { display: flex; align-items: center; gap: 10px; padding: 0 36px; border-right: 1px solid var(--border); font-size: 13px; font-weight: 500; color: var(--white-40); white-space: nowrap; }
         .m-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--white-20); flex-shrink: 0; }
         @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* ── SECTIONS ── */
         .section { padding: 120px 32px; border-top: 1px solid var(--border); }
         .container { max-width: 1100px; margin: 0 auto; }
-        .s-eyebrow {
-            font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
-            color: rgba(255,255,255,0.3); margin-bottom: 18px;
-        }
-        .s-h2 {
-            font-size: clamp(34px, 5vw, 58px); font-weight: 780; letter-spacing: -2.5px;
-            line-height: 1.05; color: var(--white); margin-bottom: 16px;
-        }
+        .s-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+        .s-h2 { font-size: clamp(28px, 5vw, 58px); font-weight: 780; letter-spacing: -2px; line-height: 1.05; color: var(--white); margin-bottom: 16px; }
         .s-h2 em { font-style: normal; color: rgba(255,255,255,0.3); }
-        .s-p { font-size: 16px; color: var(--white-40); line-height: 1.7; font-weight: 400; }
+        .s-p { font-size: 15px; color: var(--white-40); line-height: 1.7; font-weight: 400; }
 
         /* ── FEATURES ── */
-        .features-grid {
-            display: grid; grid-template-columns: repeat(12, 1fr);
-            gap: 12px; margin-top: 64px;
-        }
-        .feat {
-            background: var(--black-1); border: 1px solid var(--border);
-            border-radius: 16px; padding: 32px; transition: border-color 0.3s, box-shadow 0.3s;
-            overflow: hidden; position: relative;
-        }
+        .features-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 12px; margin-top: 64px; }
+        .feat { background: var(--black-1); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: border-color 0.3s, box-shadow 0.3s; overflow: hidden; position: relative; }
         .feat-sm { grid-column: span 4; }
         .feat-md { grid-column: span 6; }
         .feat-lg { grid-column: span 8; }
-
-        /* Feature glow state triggered by animation */
-        .feat.energy-active {
-            border-color: rgba(255,255,255,0.25) !important;
-            box-shadow: 0 0 30px rgba(255,255,255,0.06), inset 0 0 20px rgba(255,255,255,0.02) !important;
-        }
-
-        .feat-icon {
-            width: 40px; height: 40px; border-radius: 10px; background: var(--white-06);
-            border: 1px solid var(--border); display: flex; align-items: center;
-            justify-content: center; font-size: 18px; margin-bottom: 22px;
-        }
-        .feat-title { font-size: 16px; font-weight: 650; letter-spacing: -0.5px; color: var(--white); margin-bottom: 9px; }
-        .feat-desc { font-size: 13.5px; color: var(--white-40); line-height: 1.65; }
-
-        .feat-list { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
-        .feat-list-row {
-            display: flex; align-items: center; gap: 12px; padding: 12px 14px;
-            border-radius: 10px; background: var(--black-2); border: 1px solid var(--border);
-            transition: border-color 0.15s; cursor: pointer;
-        }
+        .feat.energy-active { border-color: rgba(255,255,255,0.3) !important; box-shadow: 0 0 24px rgba(255,255,255,0.07), inset 0 0 16px rgba(255,255,255,0.02) !important; }
+        .feat-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--white-06); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 20px; }
+        .feat-title { font-size: 15px; font-weight: 650; letter-spacing: -0.4px; color: var(--white); margin-bottom: 9px; }
+        .feat-desc { font-size: 13px; color: var(--white-40); line-height: 1.65; }
+        .feat-list { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+        .feat-list-row { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; background: var(--black-2); border: 1px solid var(--border); transition: border-color 0.15s; cursor: pointer; }
         .feat-list-row:hover { border-color: var(--border-hover); }
-        .fl-av {
-            width: 30px; height: 30px; border-radius: 8px; background: var(--white-10);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 12px; font-weight: 700; flex-shrink: 0;
-        }
+        .fl-av { width: 28px; height: 28px; border-radius: 7px; background: var(--white-10); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
         .fl-info { flex: 1; min-width: 0; }
-        .fl-name { font-size: 12.5px; font-weight: 600; color: var(--white-80); letter-spacing: -0.2px; }
-        .fl-role { font-size: 11px; color: rgba(255,255,255,0.3); }
+        .fl-name { font-size: 12px; font-weight: 600; color: var(--white-80); }
+        .fl-role { font-size: 10.5px; color: rgba(255,255,255,0.3); }
         .fl-status { width: 7px; height: 7px; border-radius: 50%; background: #3a3a3a; flex-shrink: 0; }
         .fl-status.live { background: #4ade80; box-shadow: 0 0 8px rgba(74,222,128,0.4); }
-
-        .feat-chart { margin-top: 24px; display: flex; align-items: flex-end; gap: 6px; height: 60px; }
-        .chart-bar { flex: 1; border-radius: 4px 4px 0 0; background: var(--white-10); transition: background 0.2s; cursor: pointer; }
+        .feat-chart { margin-top: 20px; display: flex; align-items: flex-end; gap: 5px; height: 56px; }
+        .chart-bar { flex: 1; border-radius: 3px 3px 0 0; background: var(--white-10); transition: background 0.2s; cursor: pointer; }
         .chart-bar:hover { background: var(--white-20); }
         .chart-bar.hi { background: rgba(255,255,255,0.3); }
-        .feat-chart-labels { display: flex; gap: 6px; margin-top: 6px; }
-        .chart-label { flex: 1; text-align: center; font-size: 10px; color: var(--white-20); }
+        .feat-chart-labels { display: flex; gap: 5px; margin-top: 5px; }
+        .chart-label { flex: 1; text-align: center; font-size: 9px; color: var(--white-20); }
 
         /* ── HOW IT WORKS ── */
-        .how-layout {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 100px; align-items: center; margin-top: 72px;
-        }
+        .how-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 72px; }
         .steps { display: flex; flex-direction: column; }
-        .step {
-            display: flex; gap: 20px; padding: 24px 0;
-            border-bottom: 1px solid var(--border); cursor: pointer;
-        }
+        .step { display: flex; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
         .step:first-child { padding-top: 0; }
         .step:last-child { border-bottom: none; padding-bottom: 0; }
-        .step-n {
-            width: 30px; height: 30px; border-radius: 8px; background: var(--white-06);
-            border: 1px solid var(--border); display: flex; align-items: center;
-            justify-content: center; font-size: 12px; font-weight: 600;
-            color: rgba(255,255,255,0.3); flex-shrink: 0; margin-top: 2px; transition: all 0.2s;
-        }
+        .step-n { width: 30px; height: 30px; border-radius: 8px; background: var(--white-06); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.3); flex-shrink: 0; margin-top: 2px; transition: all 0.2s; }
         .step:hover .step-n { background: var(--white); color: var(--black); border-color: var(--white); }
-        .step-title { font-size: 15px; font-weight: 650; color: var(--white-80); letter-spacing: -0.4px; margin-bottom: 6px; transition: color 0.15s; }
+        .step-title { font-size: 15px; font-weight: 650; color: var(--white-80); letter-spacing: -0.3px; margin-bottom: 6px; transition: color 0.15s; }
         .step:hover .step-title { color: var(--white); }
-        .step-desc { font-size: 13.5px; color: rgba(255,255,255,0.3); line-height: 1.65; }
+        .step-desc { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.65; }
 
         /* phone */
         .phone-wrap { display: flex; justify-content: center; }
-        .phone {
-            width: 280px; background: var(--black-2); border: 1px solid var(--border);
-            border-radius: 44px; padding: 18px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.03);
-        }
-        .phone-pill {
-            width: 70px; height: 6px; background: var(--black-4);
-            border-radius: 3px; margin: 0 auto 18px;
-        }
-        .phone-screen {
-            background: var(--black-3); border-radius: 30px;
-            padding: 20px; min-height: 440px; position: relative;
-        }
-        .p-header {
-            font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3);
-            letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 14px;
-        }
-        .p-card {
-            background: var(--black-2); border: 1px solid var(--border);
-            border-radius: 18px; padding: 20px; margin-bottom: 12px; position: relative; overflow: hidden;
-        }
-        .p-card-glow {
-            position: absolute; width: 120px; height: 120px; border-radius: 50%;
-            background: rgba(255,255,255,0.02); top: -30px; right: -30px;
-        }
-        .p-av {
-            width: 44px; height: 44px; border-radius: 12px; background: var(--white-10);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 16px; font-weight: 700; margin-bottom: 14px;
-        }
-        .p-name { font-size: 16px; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
-        .p-role { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 2px; }
-        .p-hr { height: 1px; background: var(--border); margin: 14px 0; }
-        .p-row { display: flex; align-items: center; gap: 9px; margin-bottom: 7px; }
-        .p-ico {
-            width: 22px; height: 22px; border-radius: 6px; background: var(--white-06);
-            display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0;
-        }
-        .p-txt { font-size: 11.5px; color: var(--white-40); }
-        .p-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
-        .p-act {
-            background: var(--white-06); border: 1px solid var(--border); border-radius: 9px;
-            padding: 9px; text-align: center; font-size: 11px; font-weight: 500;
-            color: var(--white-40); cursor: pointer; transition: all 0.15s;
-        }
+        .phone { width: 260px; background: var(--black-2); border: 1px solid var(--border); border-radius: 44px; padding: 16px; box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.03); transition: box-shadow 0.4s, border-color 0.4s; }
+        .phone.source-active { box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 40px rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+        .phone-pill { width: 70px; height: 6px; background: var(--black-4); border-radius: 3px; margin: 0 auto 16px; }
+        .phone-screen { background: var(--black-3); border-radius: 30px; padding: 18px; min-height: 400px; position: relative; }
+        .p-header { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px; }
+        .p-card { background: var(--black-2); border: 1px solid var(--border); border-radius: 16px; padding: 18px; margin-bottom: 10px; position: relative; overflow: hidden; }
+        .p-card-glow { position: absolute; width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,0.02); top: -25px; right: -25px; }
+        .p-av { width: 40px; height: 40px; border-radius: 11px; background: var(--white-10); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+        .p-name { font-size: 15px; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
+        .p-role { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+        .p-hr { height: 1px; background: var(--border); margin: 12px 0; }
+        .p-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .p-ico { width: 20px; height: 20px; border-radius: 5px; background: var(--white-06); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
+        .p-txt { font-size: 11px; color: var(--white-40); }
+        .p-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 12px; }
+        .p-act { background: var(--white-06); border: 1px solid var(--border); border-radius: 8px; padding: 8px; text-align: center; font-size: 10px; font-weight: 500; color: var(--white-40); cursor: pointer; transition: all 0.15s; }
         .p-act:hover { background: var(--white-10); color: rgba(255,255,255,0.7); }
 
-        /* Source phone glow when card is near */
-        .phone.source-active {
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.03),
-                        0 0 40px rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.2);
-            transition: box-shadow 0.3s, border-color 0.3s;
-        }
-
         /* ── INTEGRATIONS ── */
-        .int-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .int-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .int-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .int-item {
-            background: var(--black-1); border: 1px solid var(--border); border-radius: 14px;
-            padding: 20px 12px; display: flex; flex-direction: column; align-items: center;
-            gap: 10px; cursor: pointer; transition: all 0.2s;
-        }
+        .int-item { background: var(--black-1); border: 1px solid var(--border); border-radius: 14px; padding: 18px 10px; display: flex; flex-direction: column; align-items: center; gap: 9px; cursor: pointer; transition: all 0.2s; }
         .int-item:hover { border-color: var(--border-hover); background: var(--black-2); }
-        .int-icon {
-            width: 40px; height: 40px; border-radius: 11px; background: var(--white-06);
-            border: 1px solid var(--border); display: flex; align-items: center;
-            justify-content: center; font-size: 18px;
-        }
-        .int-name { font-size: 11px; color: var(--white-40); text-align: center; font-weight: 500; }
+        .int-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--white-06); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 17px; }
+        .int-name { font-size: 10.5px; color: var(--white-40); text-align: center; font-weight: 500; }
 
         /* ── PRICING ── */
         .pricing-toggle-wrap { display: flex; justify-content: center; margin-top: 16px; }
-        .ptoggle {
-            display: inline-flex; background: var(--black-2); border: 1px solid var(--border);
-            border-radius: 9px; padding: 3px; gap: 3px;
-        }
-        .ptbtn {
-            padding: 7px 18px; border-radius: 7px; font-size: 13px; font-weight: 500;
-            cursor: pointer; border: none; background: none; color: var(--white-40); transition: all 0.2s;
-        }
+        .ptoggle { display: inline-flex; background: var(--black-2); border: 1px solid var(--border); border-radius: 9px; padding: 3px; gap: 3px; }
+        .ptbtn { padding: 7px 18px; border-radius: 7px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; background: none; color: var(--white-40); transition: all 0.2s; }
         .ptbtn.active { background: var(--white-10); color: var(--white); }
-        .save-tag {
-            font-size: 10px; font-weight: 650; background: var(--white-10); color: var(--white-60);
-            padding: 2px 7px; border-radius: 5px; margin-left: 5px;
-        }
+        .save-tag { font-size: 10px; font-weight: 650; background: var(--white-10); color: var(--white-60); padding: 2px 7px; border-radius: 5px; margin-left: 5px; }
         .pricing-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 60px; }
-        .pc {
-            background: var(--black-1); border: 1px solid var(--border); border-radius: 18px;
-            padding: 32px; position: relative; transition: border-color 0.2s;
-        }
+        .pc { background: var(--black-1); border: 1px solid var(--border); border-radius: 18px; padding: 28px; position: relative; transition: border-color 0.2s; }
         .pc:hover { border-color: var(--border-hover); }
         .pc.popular { border-color: rgba(255,255,255,0.15); background: var(--black-2); }
-        .popular-label {
-            position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
-            background: var(--white); color: var(--black); font-size: 10.5px; font-weight: 700;
-            padding: 4px 14px; border-radius: 0 0 8px 8px;
-        }
-        .pc-plan { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
-        .pc-price { font-size: 48px; font-weight: 800; letter-spacing: -3px; line-height: 1; color: var(--white); margin-bottom: 4px; }
-        .pc-price sup { font-size: 22px; font-weight: 600; vertical-align: super; }
-        .pc-per { font-size: 13px; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
-        .pc-desc { font-size: 13.5px; color: var(--white-40); line-height: 1.6; margin-bottom: 28px; }
-        .pc-btn-white {
-            display: block; background: var(--white); color: var(--black); font-size: 13.5px;
-            font-weight: 650; padding: 11px; border-radius: 9px; text-align: center;
-            text-decoration: none; transition: opacity 0.15s; border: none; cursor: pointer; width: 100%;
-        }
+        .popular-label { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--white); color: var(--black); font-size: 10px; font-weight: 700; padding: 4px 14px; border-radius: 0 0 8px 8px; }
+        .pc-plan { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+        .pc-price { font-size: 44px; font-weight: 800; letter-spacing: -3px; line-height: 1; color: var(--white); margin-bottom: 4px; }
+        .pc-price sup { font-size: 20px; font-weight: 600; vertical-align: super; }
+        .pc-per { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
+        .pc-desc { font-size: 13px; color: var(--white-40); line-height: 1.6; margin-bottom: 24px; }
+        .pc-btn-white { display: block; background: var(--white); color: var(--black); font-size: 13px; font-weight: 650; padding: 11px; border-radius: 9px; text-align: center; text-decoration: none; transition: opacity 0.15s; border: none; cursor: pointer; width: 100%; }
         .pc-btn-white:hover { opacity: 0.85; }
-        .pc-btn-dark {
-            display: block; background: var(--white-06); color: rgba(255,255,255,0.7);
-            font-size: 13.5px; font-weight: 600; padding: 11px; border-radius: 9px;
-            text-align: center; text-decoration: none; transition: all 0.15s;
-            border: 1px solid var(--border); cursor: pointer; width: 100%;
-        }
+        .pc-btn-dark { display: block; background: var(--white-06); color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 600; padding: 11px; border-radius: 9px; text-align: center; text-decoration: none; transition: all 0.15s; border: 1px solid var(--border); cursor: pointer; width: 100%; }
         .pc-btn-dark:hover { background: var(--white-10); color: var(--white); }
-        .pc-divider { height: 1px; background: var(--border); margin: 24px 0; }
-        .pc-features { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-        .pc-features li { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,0.5); }
-        .pc-features li .ck {
-            width: 18px; height: 18px; border-radius: 5px; background: var(--white-06);
-            border: 1px solid var(--border); display: flex; align-items: center;
-            justify-content: center; font-size: 10px; color: var(--white-60); flex-shrink: 0;
-        }
+        .pc-divider { height: 1px; background: var(--border); margin: 20px 0; }
+        .pc-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .pc-features li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.5); }
+        .pc-features li .ck { width: 17px; height: 17px; border-radius: 5px; background: var(--white-06); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 9px; color: var(--white-60); flex-shrink: 0; }
 
         /* ── TESTIMONIALS ── */
-        .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 64px; }
-        .testi {
-            background: var(--black-1); border: 1px solid var(--border);
-            border-radius: 16px; padding: 28px; transition: border-color 0.2s;
-        }
+        .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 60px; }
+        .testi { background: var(--black-1); border: 1px solid var(--border); border-radius: 16px; padding: 24px; transition: border-color 0.2s; }
         .testi:hover { border-color: var(--border-hover); }
-        .testi-stars { display: flex; gap: 2px; margin-bottom: 16px; }
+        .testi-stars { display: flex; gap: 2px; margin-bottom: 14px; }
         .star { font-size: 12px; color: var(--white-40); }
-        .testi-text { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.72; margin-bottom: 22px; }
-        .testi-author { display: flex; align-items: center; gap: 11px; }
-        .t-av {
-            width: 36px; height: 36px; border-radius: 10px; background: var(--white-10);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 13px; font-weight: 700; border: 1px solid var(--border);
-        }
-        .t-name { font-size: 13px; font-weight: 600; color: var(--white-80); letter-spacing: -0.2px; }
-        .t-role { font-size: 11.5px; color: rgba(255,255,255,0.3); }
+        .testi-text { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 20px; }
+        .testi-author { display: flex; align-items: center; gap: 10px; }
+        .t-av { width: 34px; height: 34px; border-radius: 9px; background: var(--white-10); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; border: 1px solid var(--border); }
+        .t-name { font-size: 13px; font-weight: 600; color: var(--white-80); }
+        .t-role { font-size: 11px; color: rgba(255,255,255,0.3); }
 
         /* ── CTA ── */
-        .cta-section {
-            border-top: 1px solid var(--border); padding: 140px 32px;
-            text-align: center; position: relative; overflow: hidden;
-        }
-        .cta-bg {
-            position: absolute; width: 700px; height: 700px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%);
-            top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
-        }
-        .cta-h2 {
-            font-size: clamp(42px, 7vw, 86px); font-weight: 820; letter-spacing: -4px;
-            line-height: 1.02; color: var(--white); margin-bottom: 20px;
-            max-width: 800px; margin-left: auto; margin-right: auto;
-        }
+        .cta-section { border-top: 1px solid var(--border); padding: 120px 32px; text-align: center; position: relative; overflow: hidden; }
+        .cta-bg { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+        .cta-h2 { font-size: clamp(36px, 7vw, 86px); font-weight: 820; letter-spacing: -3px; line-height: 1.02; color: var(--white); margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
         .cta-h2 em { font-style: normal; color: rgba(255,255,255,0.3); }
-        .cta-sub { font-size: 16px; color: var(--white-40); max-width: 400px; margin: 0 auto 44px; line-height: 1.65; }
+        .cta-sub { font-size: 15px; color: var(--white-40); max-width: 400px; margin: 0 auto 40px; line-height: 1.65; }
         .cta-actions { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        .cta-fine { margin-top: 22px; font-size: 12px; color: rgba(255,255,255,0.25); }
+        .cta-fine { margin-top: 20px; font-size: 12px; color: rgba(255,255,255,0.25); }
 
         /* ── FOOTER ── */
-        footer { border-top: 1px solid var(--border); padding: 72px 32px 40px; background: var(--black); }
-        .footer-top {
-            max-width: 1100px; margin: 0 auto 56px;
-            display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr 1fr; gap: 48px;
-        }
+        footer { border-top: 1px solid var(--border); padding: 60px 32px 36px; background: var(--black); }
+        .footer-top { max-width: 1100px; margin: 0 auto 48px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px; }
         .ft-brand-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--white); margin-bottom: 14px; }
-        .ft-tagline { font-size: 13.5px; color: rgba(255,255,255,0.3); line-height: 1.7; max-width: 260px; margin-bottom: 24px; }
+        .ft-tagline { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.7; max-width: 240px; margin-bottom: 20px; }
         .ft-socials { display: flex; gap: 8px; }
-        .ft-social {
-            width: 32px; height: 32px; border-radius: 8px; background: var(--white-06);
-            border: 1px solid var(--border); display: flex; align-items: center;
-            justify-content: center; font-size: 13px; cursor: pointer; transition: all 0.15s;
-            text-decoration: none; color: var(--white-40);
-        }
+        .ft-social { width: 32px; height: 32px; border-radius: 8px; background: var(--white-06); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 13px; cursor: pointer; transition: all 0.15s; text-decoration: none; color: var(--white-40); }
         .ft-social:hover { background: var(--white-10); border-color: var(--border-hover); color: var(--white); }
-        .ft-col-title { font-size: 12px; font-weight: 600; color: var(--white-60); margin-bottom: 18px; }
-        .ft-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-        .ft-links a { font-size: 13.5px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.15s; }
+        .ft-col-title { font-size: 12px; font-weight: 600; color: var(--white-60); margin-bottom: 16px; }
+        .ft-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .ft-links a { font-size: 13px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.15s; }
         .ft-links a:hover { color: rgba(255,255,255,0.7); }
-        .footer-bottom {
-            max-width: 1100px; margin: 0 auto; display: flex; align-items: center;
-            justify-content: space-between; padding-top: 28px; border-top: 1px solid var(--border);
-        }
-        .fb-copy { font-size: 12.5px; color: var(--white-20); }
-        .fb-links { display: flex; gap: 22px; }
-        .fb-links a { font-size: 12.5px; color: var(--white-20); text-decoration: none; transition: color 0.15s; }
+        .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--border); }
+        .fb-copy { font-size: 12px; color: var(--white-20); }
+        .fb-links { display: flex; gap: 20px; }
+        .fb-links a { font-size: 12px; color: var(--white-20); text-decoration: none; transition: color 0.15s; }
         .fb-links a:hover { color: rgba(255,255,255,0.5); }
 
         /* ── KEYFRAMES ── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
         .reveal.on { opacity: 1; transform: none; }
 
-        /* ── FLYING CARD ── */
+        /* ══════════════════════════════════
+           FLYING CARD  (works on all sizes)
+        ══════════════════════════════════ */
         #flying-card {
             position: fixed;
             top: 0; left: 0;
-            width: 190px;
             pointer-events: none;
             z-index: 9998;
             opacity: 0;
             will-change: transform, opacity;
-            transform: translate(-9999px, -9999px);
+            /* start off-screen */
+            transform: translate(-9999px, -9999px) scale(1);
         }
+
+        /* Desktop size */
+        #flying-card { width: 180px; }
+
+        /* Mobile size */
+        @media (max-width: 640px) {
+            #flying-card { width: 130px; }
+        }
+
         .flying-card-inner {
             background: #141414;
             border: 1px solid rgba(255,255,255,0.18);
-            border-radius: 16px;
-            padding: 18px;
-            box-shadow: 0 24px 64px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.04), 0 0 30px rgba(255,255,255,0.05);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9),
+                        0 0 0 1px rgba(255,255,255,0.04),
+                        0 0 30px rgba(255,255,255,0.06);
             position: relative; overflow: hidden;
         }
         .flying-card-inner::before {
             content: '';
             position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 55%);
+            border-radius: 14px; pointer-events: none;
         }
-        .fc-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: rgba(255,255,255,0.22); margin-bottom: 12px; }
-        .fc-av {
-            width: 32px; height: 32px; border-radius: 9px; background: rgba(255,255,255,0.1);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 13px; font-weight: 700; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.1);
-        }
-        .fc-name { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: -0.3px; margin-bottom: 2px; }
-        .fc-role { font-size: 10px; color: rgba(255,255,255,0.32); margin-bottom: 10px; }
-        .fc-divider { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 8px; }
-        .fc-email { font-size: 10px; color: rgba(255,255,255,0.22); }
+        .fc-tag { font-size: 8px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 10px; }
+        .fc-av { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.1); }
+        .fc-name { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: -0.3px; margin-bottom: 2px; }
+        .fc-role { font-size: 9px; color: rgba(255,255,255,0.32); margin-bottom: 9px; }
+        .fc-divider { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 7px; }
+        .fc-email { font-size: 9px; color: rgba(255,255,255,0.22); }
         .fc-shine {
-            position: absolute; top: -50%; left: -50%; width: 60px; height: 200%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+            position: absolute; top: -50%; left: -50%; width: 50px; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
             transform: rotate(20deg);
-            animation: cardShine 3s ease-in-out infinite;
+            animation: cardShine 2.5s ease-in-out infinite;
         }
-        @keyframes cardShine {
-            0% { left: -50%; }
-            100% { left: 150%; }
-        }
+        @keyframes cardShine { 0% { left: -50%; } 100% { left: 150%; } }
 
         /* ── ENERGY CANVAS ── */
         #energy-canvas {
             position: fixed;
             top: 0; left: 0;
-            width: 100%; height: 100%;
+            width: 100vw; height: 100vh;
             pointer-events: none;
             z-index: 9997;
+            display: block;
         }
 
-        /* ── MOBILE ── */
+        /* ── MOBILE LAYOUT FIXES ── */
         @media (max-width: 860px) {
             nav { padding: 0 20px; }
             .nav-center { display: none; }
+            .showcase { padding: 0 16px 80px; }
+            .showcase-body { grid-template-columns: 1fr; gap: 10px; }
             .section { padding: 80px 20px; }
-            .features-grid { grid-template-columns: 1fr !important; }
+            .features-grid { grid-template-columns: 1fr 1fr !important; gap: 10px; }
             .feat-sm, .feat-md, .feat-lg { grid-column: span 1; }
-            .how-layout { grid-template-columns: 1fr; gap: 52px; }
-            .int-layout { grid-template-columns: 1fr; gap: 52px; }
+            .how-layout { grid-template-columns: 1fr; gap: 48px; }
+            .int-layout { grid-template-columns: 1fr; gap: 48px; }
             .int-grid { grid-template-columns: repeat(3, 1fr); }
             .pricing-cards { grid-template-columns: 1fr; }
             .testi-grid { grid-template-columns: 1fr; }
             .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-            .footer-bottom { flex-direction: column; gap: 14px; }
-            .hero-numbers { flex-wrap: wrap; justify-content: center; }
-            .hero-num-item { padding: 0 20px; }
-            #flying-card, #energy-canvas { display: none; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+            .hero-num-item { padding: 8px 20px; }
+        }
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr !important; }
+            .hero { padding: 100px 20px 60px; }
+            .hero-h1 { letter-spacing: -2px; }
+            .footer-top { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<!-- ── ENERGY CANVAS ── -->
+<!-- ══ ENERGY CANVAS (real canvas element) ══ -->
 <canvas id="energy-canvas"></canvas>
 
-<!-- ── FLYING CARD ── -->
+<!-- ══ FLYING CARD ══ -->
 <div id="flying-card" aria-hidden="true">
     <div class="flying-card-inner">
         <div class="fc-shine"></div>
         <div class="fc-tag">Pro Card</div>
         <div class="fc-av">A</div>
         <div class="fc-name">Alex Morgan</div>
-        <div class="fc-role">Sr. Product Designer · Acme</div>
+        <div class="fc-role">Product Designer · Acme</div>
         <div class="fc-divider"></div>
         <div class="fc-email">alex@acme.com</div>
     </div>
 </div>
 
-<!-- ── NAV ── -->
+<!-- ══ NAV ══ -->
 <nav id="main-nav">
     <a href="#" class="nav-logo">
         <div class="nav-logo-mark">
@@ -648,7 +394,7 @@
     </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- ══ HERO ══ -->
 <section class="hero">
     <div class="hero-noise"></div>
     <div class="hero-badge">
@@ -668,32 +414,18 @@
         </a>
     </div>
     <div class="hero-numbers">
-        <div class="hero-num-item">
-            <div class="hero-num-val" data-target="250" data-suffix="K+">250K+</div>
-            <div class="hero-num-label">Cards created</div>
-        </div>
-        <div class="hero-num-item">
-            <div class="hero-num-val" data-target="40" data-suffix="K+">40K+</div>
-            <div class="hero-num-label">Professionals</div>
-        </div>
-        <div class="hero-num-item">
-            <div class="hero-num-val" data-target="4.9" data-suffix="">4.9</div>
-            <div class="hero-num-label">App rating</div>
-        </div>
-        <div class="hero-num-item">
-            <div class="hero-num-val" data-target="98" data-suffix="%">98%</div>
-            <div class="hero-num-label">Satisfaction</div>
-        </div>
+        <div class="hero-num-item"><div class="hero-num-val" data-target="250" data-suffix="K+">250K+</div><div class="hero-num-label">Cards created</div></div>
+        <div class="hero-num-item"><div class="hero-num-val" data-target="40" data-suffix="K+">40K+</div><div class="hero-num-label">Professionals</div></div>
+        <div class="hero-num-item"><div class="hero-num-val" data-target="4.9" data-suffix="">4.9</div><div class="hero-num-label">App rating</div></div>
+        <div class="hero-num-item"><div class="hero-num-val" data-target="98" data-suffix="%">98%</div><div class="hero-num-label">Satisfaction</div></div>
     </div>
 </section>
 
-<!-- ── SHOWCASE ── -->
+<!-- ══ SHOWCASE ══ -->
 <div class="showcase reveal">
     <div class="showcase-inner">
         <div class="showcase-bar">
-            <div class="s-dots">
-                <div class="s-dot r"></div><div class="s-dot y"></div><div class="s-dot g"></div>
-            </div>
+            <div class="s-dots"><div class="s-dot"></div><div class="s-dot"></div><div class="s-dot"></div></div>
             <div class="s-tabs">
                 <div class="s-tab active">My Cards</div>
                 <div class="s-tab">Contacts</div>
@@ -721,7 +453,7 @@
     </div>
 </div>
 
-<!-- ── MARQUEE ── -->
+<!-- ══ MARQUEE ══ -->
 <div class="marquee-wrap">
     <div class="marquee-track">
         <div class="m-item"><div class="m-dot"></div>NFC Sharing</div>
@@ -751,7 +483,7 @@
     </div>
 </div>
 
-<!-- ── FEATURES ── -->
+<!-- ══ FEATURES ══ -->
 <section class="section" id="features">
     <div class="container">
         <div class="reveal">
@@ -762,23 +494,11 @@
             <div class="feat feat-lg" data-feat="0">
                 <div class="feat-icon">✦</div>
                 <div class="feat-title">Beautiful Card Builder</div>
-                <div class="feat-desc">Design cards that actually reflect your brand. 50+ templates, full customization, and your own color system.</div>
+                <div class="feat-desc">Design cards that reflect your brand. 50+ templates, full customization.</div>
                 <div class="feat-list">
-                    <div class="feat-list-row">
-                        <div class="fl-av">A</div>
-                        <div class="fl-info"><div class="fl-name">Alex Morgan</div><div class="fl-role">Product Designer · Acme Corp</div></div>
-                        <div class="fl-status live"></div>
-                    </div>
-                    <div class="feat-list-row">
-                        <div class="fl-av">S</div>
-                        <div class="fl-info"><div class="fl-name">Sarah Chen</div><div class="fl-role">Head of Growth · XYZ</div></div>
-                        <div class="fl-status live"></div>
-                    </div>
-                    <div class="feat-list-row">
-                        <div class="fl-av">J</div>
-                        <div class="fl-info"><div class="fl-name">James Parker</div><div class="fl-role">Engineer · Independent</div></div>
-                        <div class="fl-status"></div>
-                    </div>
+                    <div class="feat-list-row"><div class="fl-av">A</div><div class="fl-info"><div class="fl-name">Alex Morgan</div><div class="fl-role">Product Designer · Acme</div></div><div class="fl-status live"></div></div>
+                    <div class="feat-list-row"><div class="fl-av">S</div><div class="fl-info"><div class="fl-name">Sarah Chen</div><div class="fl-role">Head of Growth · XYZ</div></div><div class="fl-status live"></div></div>
+                    <div class="feat-list-row"><div class="fl-av">J</div><div class="fl-info"><div class="fl-name">James Parker</div><div class="fl-role">Engineer · Independent</div></div><div class="fl-status"></div></div>
                 </div>
             </div>
             <div class="feat feat-sm" data-feat="1">
@@ -786,56 +506,24 @@
                 <div class="feat-title">Analytics</div>
                 <div class="feat-desc">See who views your card, when, and from where.</div>
                 <div class="feat-chart">
-                    <div class="chart-bar" style="height:35%"></div>
-                    <div class="chart-bar" style="height:55%"></div>
-                    <div class="chart-bar" style="height:40%"></div>
-                    <div class="chart-bar hi" style="height:85%"></div>
-                    <div class="chart-bar" style="height:65%"></div>
-                    <div class="chart-bar" style="height:50%"></div>
+                    <div class="chart-bar" style="height:35%"></div><div class="chart-bar" style="height:55%"></div>
+                    <div class="chart-bar" style="height:40%"></div><div class="chart-bar hi" style="height:85%"></div>
+                    <div class="chart-bar" style="height:65%"></div><div class="chart-bar" style="height:50%"></div>
                     <div class="chart-bar hi" style="height:90%"></div>
                 </div>
-                <div class="feat-chart-labels">
-                    <div class="chart-label">M</div><div class="chart-label">T</div>
-                    <div class="chart-label">W</div><div class="chart-label">T</div>
-                    <div class="chart-label">F</div><div class="chart-label">S</div>
-                    <div class="chart-label">S</div>
-                </div>
+                <div class="feat-chart-labels"><div class="chart-label">M</div><div class="chart-label">T</div><div class="chart-label">W</div><div class="chart-label">T</div><div class="chart-label">F</div><div class="chart-label">S</div><div class="chart-label">S</div></div>
             </div>
-            <div class="feat feat-sm" data-feat="2">
-                <div class="feat-icon">⊙</div>
-                <div class="feat-title">NFC & QR Sharing</div>
-                <div class="feat-desc">Tap phones or show a code. Sharing your card takes one second.</div>
-            </div>
-            <div class="feat feat-sm" data-feat="3">
-                <div class="feat-icon">⬡</div>
-                <div class="feat-title">AI Card Scanner</div>
-                <div class="feat-desc">Photograph any paper card. Our AI extracts every detail instantly.</div>
-            </div>
-            <div class="feat feat-sm" data-feat="4">
-                <div class="feat-icon">◎</div>
-                <div class="feat-title">Privacy Controls</div>
-                <div class="feat-desc">Show different information to different people.</div>
-            </div>
-            <div class="feat feat-sm" data-feat="5">
-                <div class="feat-icon">⬕</div>
-                <div class="feat-title">Team Workspaces</div>
-                <div class="feat-desc">Keep your whole team on-brand. Manage templates centrally.</div>
-            </div>
-            <div class="feat feat-sm" data-feat="6">
-                <div class="feat-icon">⌁</div>
-                <div class="feat-title">Smart Follow-ups</div>
-                <div class="feat-desc">Never let a connection go cold with smart reminders.</div>
-            </div>
-            <div class="feat feat-sm" data-feat="7">
-                <div class="feat-icon">⊞</div>
-                <div class="feat-title">CRM Sync</div>
-                <div class="feat-desc">New connection? Already a lead in Salesforce. Zero manual entry.</div>
-            </div>
+            <div class="feat feat-sm" data-feat="2"><div class="feat-icon">⊙</div><div class="feat-title">NFC & QR Sharing</div><div class="feat-desc">Tap phones or show a code. One second, not ten.</div></div>
+            <div class="feat feat-sm" data-feat="3"><div class="feat-icon">⬡</div><div class="feat-title">AI Card Scanner</div><div class="feat-desc">Photograph any paper card. AI extracts every detail.</div></div>
+            <div class="feat feat-sm" data-feat="4"><div class="feat-icon">◎</div><div class="feat-title">Privacy Controls</div><div class="feat-desc">Show different info to different people. One card, many versions.</div></div>
+            <div class="feat feat-sm" data-feat="5"><div class="feat-icon">⬕</div><div class="feat-title">Team Workspaces</div><div class="feat-desc">Keep your whole team on-brand. Central templates & permissions.</div></div>
+            <div class="feat feat-sm" data-feat="6"><div class="feat-icon">⌁</div><div class="feat-title">Smart Follow-ups</div><div class="feat-desc">Never let a connection go cold with timed reminders.</div></div>
+            <div class="feat feat-sm" data-feat="7"><div class="feat-icon">⊞</div><div class="feat-title">CRM Sync</div><div class="feat-desc">New connection? Already a lead in Salesforce. Zero manual entry.</div></div>
         </div>
     </div>
 </section>
 
-<!-- ── HOW IT WORKS ── -->
+<!-- ══ HOW IT WORKS ══ -->
 <section class="section" id="how">
     <div class="container">
         <div class="reveal">
@@ -845,8 +533,8 @@
         <div class="how-layout">
             <div class="steps reveal">
                 <div class="step"><div class="step-n">01</div><div><div class="step-title">Create your card</div><div class="step-desc">Pick a template or build from scratch. Add your details, photo, and links. Takes about three minutes.</div></div></div>
-                <div class="step"><div class="step-n">02</div><div><div class="step-title">Share anywhere</div><div class="step-desc">Tap via NFC, show a QR code, or send your unique link. Works everywhere, no app required on the receiver's end.</div></div></div>
-                <div class="step"><div class="step-n">03</div><div><div class="step-title">Collect & organize</div><div class="step-desc">Scan paper cards or receive digital ones. Every contact is automatically categorized and searchable.</div></div></div>
+                <div class="step"><div class="step-n">02</div><div><div class="step-title">Share anywhere</div><div class="step-desc">Tap via NFC, show a QR code, or send your unique link. No app required on the receiver's end.</div></div></div>
+                <div class="step"><div class="step-n">03</div><div><div class="step-title">Collect & organize</div><div class="step-desc">Scan paper cards or receive digital ones. Every contact is automatically categorized.</div></div></div>
                 <div class="step"><div class="step-n">04</div><div><div class="step-title">Track and follow up</div><div class="step-desc">See card views, get follow-up reminders, and sync everything to your CRM automatically.</div></div></div>
             </div>
             <div class="phone-wrap reveal">
@@ -871,17 +559,17 @@
                                 <div class="p-act">✏️ Edit</div>
                             </div>
                         </div>
-                        <div class="p-card" style="padding:14px 16px;margin-bottom:0;">
-                            <div style="font-size:10px;color:rgba(255,255,255,0.3);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">Recent Views</div>
-                            <div style="display:flex;flex-direction:column;gap:7px;">
-                                <div style="display:flex;align-items:center;gap:9px;">
-                                    <div style="width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">M</div>
-                                    <div style="flex:1;"><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.7);">Maria Santos</div><div style="font-size:10px;color:rgba(255,255,255,0.25);">2 min ago · San Francisco</div></div>
-                                    <div style="width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px rgba(74,222,128,0.5);flex-shrink:0;"></div>
+                        <div class="p-card" style="padding:12px 14px;margin-bottom:0;">
+                            <div style="font-size:9px;color:rgba(255,255,255,0.3);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:9px;">Recent Views</div>
+                            <div style="display:flex;flex-direction:column;gap:6px;">
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <div style="width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;">M</div>
+                                    <div style="flex:1;"><div style="font-size:10px;font-weight:600;color:rgba(255,255,255,0.7);">Maria Santos</div><div style="font-size:9px;color:rgba(255,255,255,0.25);">2 min ago · SF</div></div>
+                                    <div style="width:5px;height:5px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div>
                                 </div>
-                                <div style="display:flex;align-items:center;gap:9px;">
-                                    <div style="width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">R</div>
-                                    <div style="flex:1;"><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.7);">Ryan Walsh</div><div style="font-size:10px;color:rgba(255,255,255,0.25);">1 hr ago · New York</div></div>
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <div style="width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;">R</div>
+                                    <div style="flex:1;"><div style="font-size:10px;font-weight:600;color:rgba(255,255,255,0.7);">Ryan Walsh</div><div style="font-size:9px;color:rgba(255,255,255,0.25);">1 hr ago · NY</div></div>
                                 </div>
                             </div>
                         </div>
@@ -892,14 +580,14 @@
     </div>
 </section>
 
-<!-- ── INTEGRATIONS ── -->
+<!-- ══ INTEGRATIONS ══ -->
 <section class="section" id="integrations">
     <div class="container">
         <div class="int-layout">
             <div class="reveal">
                 <div class="s-eyebrow">Integrations</div>
                 <h2 class="s-h2">Fits into your<br><em>existing stack</em></h2>
-                <p class="s-p" style="max-width:380px;margin-bottom:32px;">CardStack connects with the tools your team already uses.</p>
+                <p class="s-p" style="max-width:360px;margin-bottom:28px;">CardStack connects with the tools your team already uses.</p>
                 <a href="#" class="btn-dark">Browse all integrations →</a>
             </div>
             <div class="int-grid reveal">
@@ -916,13 +604,13 @@
     </div>
 </section>
 
-<!-- ── PRICING ── -->
+<!-- ══ PRICING ══ -->
 <section class="section" id="pricing">
     <div class="container">
         <div class="reveal" style="text-align:center;">
             <div class="s-eyebrow" style="text-align:center;">Pricing</div>
             <h2 class="s-h2" style="text-align:center;">Simple pricing,<br><em>serious value</em></h2>
-            <p class="s-p" style="max-width:400px;margin:0 auto;">No hidden fees. Start free and scale when you're ready.</p>
+            <p class="s-p" style="max-width:380px;margin:0 auto;">No hidden fees. Start free and scale when ready.</p>
             <div class="pricing-toggle-wrap">
                 <div class="ptoggle">
                     <button class="ptbtn active" onclick="switchBilling(this,'monthly')">Monthly</button>
@@ -931,59 +619,14 @@
             </div>
         </div>
         <div class="pricing-cards reveal">
-            <div class="pc">
-                <div class="pc-plan">Starter</div>
-                <div class="pc-price"><sup>$</sup>0</div>
-                <div class="pc-per">per month, free forever</div>
-                <div class="pc-desc">For individuals exploring digital business cards.</div>
-                <a href="#" class="pc-btn-dark">Get started free</a>
-                <div class="pc-divider"></div>
-                <ul class="pc-features">
-                    <li><span class="ck">✓</span>1 digital business card</li>
-                    <li><span class="ck">✓</span>QR code sharing</li>
-                    <li><span class="ck">✓</span>50 card scans / month</li>
-                    <li><span class="ck">✓</span>Basic analytics</li>
-                    <li><span class="ck">✓</span>5 templates</li>
-                </ul>
-            </div>
-            <div class="pc popular">
-                <div class="popular-label">Most Popular</div>
-                <div class="pc-plan">Pro</div>
-                <div class="pc-price" id="price-pro"><sup>$</sup>12</div>
-                <div class="pc-per" id="per-pro">per month, billed monthly</div>
-                <div class="pc-desc">For professionals who network seriously.</div>
-                <a href="#" class="pc-btn-white">Get started →</a>
-                <div class="pc-divider"></div>
-                <ul class="pc-features">
-                    <li><span class="ck">✓</span>5 digital business cards</li>
-                    <li><span class="ck">✓</span>NFC + QR sharing</li>
-                    <li><span class="ck">✓</span>Unlimited AI scanning</li>
-                    <li><span class="ck">✓</span>Full analytics & insights</li>
-                    <li><span class="ck">✓</span>50+ premium templates</li>
-                    <li><span class="ck">✓</span>CRM integrations</li>
-                </ul>
-            </div>
-            <div class="pc">
-                <div class="pc-plan">Business</div>
-                <div class="pc-price" id="price-biz"><sup>$</sup>49</div>
-                <div class="pc-per" id="per-biz">per month, billed monthly</div>
-                <div class="pc-desc">For teams that need branded cards and central management.</div>
-                <a href="#" class="pc-btn-dark">Contact sales</a>
-                <div class="pc-divider"></div>
-                <ul class="pc-features">
-                    <li><span class="ck">✓</span>Unlimited cards</li>
-                    <li><span class="ck">✓</span>Team workspaces</li>
-                    <li><span class="ck">✓</span>Brand kit & templates</li>
-                    <li><span class="ck">✓</span>Admin controls & SSO</li>
-                    <li><span class="ck">✓</span>API access</li>
-                    <li><span class="ck">✓</span>Custom domain</li>
-                </ul>
-            </div>
+            <div class="pc"><div class="pc-plan">Starter</div><div class="pc-price"><sup>$</sup>0</div><div class="pc-per">per month, free forever</div><div class="pc-desc">For individuals exploring digital business cards.</div><a href="#" class="pc-btn-dark">Get started free</a><div class="pc-divider"></div><ul class="pc-features"><li><span class="ck">✓</span>1 digital business card</li><li><span class="ck">✓</span>QR code sharing</li><li><span class="ck">✓</span>50 card scans / month</li><li><span class="ck">✓</span>Basic analytics</li><li><span class="ck">✓</span>5 templates</li></ul></div>
+            <div class="pc popular"><div class="popular-label">Most Popular</div><div class="pc-plan">Pro</div><div class="pc-price" id="price-pro"><sup>$</sup>12</div><div class="pc-per" id="per-pro">per month, billed monthly</div><div class="pc-desc">For professionals who network seriously.</div><a href="#" class="pc-btn-white">Get started →</a><div class="pc-divider"></div><ul class="pc-features"><li><span class="ck">✓</span>5 digital business cards</li><li><span class="ck">✓</span>NFC + QR sharing</li><li><span class="ck">✓</span>Unlimited AI scanning</li><li><span class="ck">✓</span>Full analytics & insights</li><li><span class="ck">✓</span>50+ premium templates</li><li><span class="ck">✓</span>CRM integrations</li></ul></div>
+            <div class="pc"><div class="pc-plan">Business</div><div class="pc-price" id="price-biz"><sup>$</sup>49</div><div class="pc-per" id="per-biz">per month, billed monthly</div><div class="pc-desc">For teams that need branded cards and management.</div><a href="#" class="pc-btn-dark">Contact sales</a><div class="pc-divider"></div><ul class="pc-features"><li><span class="ck">✓</span>Unlimited cards</li><li><span class="ck">✓</span>Team workspaces</li><li><span class="ck">✓</span>Brand kit & templates</li><li><span class="ck">✓</span>Admin controls & SSO</li><li><span class="ck">✓</span>API access</li></ul></div>
         </div>
     </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
+<!-- ══ TESTIMONIALS ══ -->
 <section class="section" id="testimonials">
     <div class="container">
         <div class="reveal" style="text-align:center;">
@@ -991,17 +634,17 @@
             <h2 class="s-h2" style="text-align:center;">Trusted by people<br><em>who get things done</em></h2>
         </div>
         <div class="testi-grid">
-            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"CardStack completely transformed how I network at conferences. The analytics showing who viewed my card are a game-changer."</div><div class="testi-author"><div class="t-av">MR</div><div><div class="t-name">Marcus Reed</div><div class="t-role">VP of Sales · TechVentures</div></div></div></div>
-            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"Our entire team uses CardStack now. The Salesforce sync alone saves us hours every week."</div><div class="testi-author"><div class="t-av">JL</div><div><div class="t-name">Jessica Liu</div><div class="t-role">Head of Marketing · Bloom Co.</div></div></div></div>
-            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"The AI scanning feature is honestly witchcraft. 200 cards organized in minutes. Nothing else comes close."</div><div class="testi-author"><div class="t-av">DK</div><div><div class="t-name">David Kim</div><div class="t-role">Founder · NovaSpark</div></div></div></div>
-            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"CardStack lets me have different cards for different clients. Same tool, different impressions."</div><div class="testi-author"><div class="t-av">AP</div><div><div class="t-name">Anya Patel</div><div class="t-role">Brand Designer · Freelance</div></div></div></div>
-            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"CardStack is the only one that feels genuinely premium. Everything is just right."</div><div class="testi-author"><div class="t-av">TW</div><div><div class="t-name">Tom Willows</div><div class="t-role">Real Estate Agent · Meridian</div></div></div></div>
-            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"Every time someone scans my card, a new lead appears in our CRM. The ROI was visible within the first week."</div><div class="testi-author"><div class="t-av">RN</div><div><div class="t-name">Rachel Nguyen</div><div class="t-role">Sales Director · CloudBase</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"CardStack transformed how I network. Analytics showing who viewed my card are a game-changer."</div><div class="testi-author"><div class="t-av">MR</div><div><div class="t-name">Marcus Reed</div><div class="t-role">VP of Sales · TechVentures</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"Our whole team uses CardStack. Salesforce sync saves hours every week."</div><div class="testi-author"><div class="t-av">JL</div><div><div class="t-name">Jessica Liu</div><div class="t-role">Head of Marketing · Bloom Co.</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"AI scanning is witchcraft. 200 cards organized in minutes. Nothing comes close."</div><div class="testi-author"><div class="t-av">DK</div><div><div class="t-name">David Kim</div><div class="t-role">Founder · NovaSpark</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"Different cards for different clients. Same tool, different impressions."</div><div class="testi-author"><div class="t-av">AP</div><div><div class="t-name">Anya Patel</div><div class="t-role">Brand Designer · Freelance</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"Only card app that feels genuinely premium. NFC sharing, design quality — all just right."</div><div class="testi-author"><div class="t-av">TW</div><div><div class="t-name">Tom Willows</div><div class="t-role">Real Estate · Meridian</div></div></div></div>
+            <div class="testi reveal"><div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="testi-text">"Every card scan creates a CRM lead. ROI visible in the first week."</div><div class="testi-author"><div class="t-av">RN</div><div><div class="t-name">Rachel Nguyen</div><div class="t-role">Sales Director · CloudBase</div></div></div></div>
         </div>
     </div>
 </section>
 
-<!-- ── CTA ── -->
+<!-- ══ CTA ══ -->
 <section class="cta-section">
     <div class="cta-bg"></div>
     <div class="container" style="position:relative;z-index:1;">
@@ -1017,7 +660,7 @@
     </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- ══ FOOTER ══ -->
 <footer>
     <div class="footer-top">
         <div>
@@ -1027,10 +670,8 @@
             </a>
             <p class="ft-tagline">The modern OS for business cards and professional networking.</p>
             <div class="ft-socials">
-                <a href="#" class="ft-social">𝕏</a>
-                <a href="#" class="ft-social">in</a>
-                <a href="#" class="ft-social">▶</a>
-                <a href="#" class="ft-social">◉</a>
+                <a href="#" class="ft-social">𝕏</a><a href="#" class="ft-social">in</a>
+                <a href="#" class="ft-social">▶</a><a href="#" class="ft-social">◉</a>
             </div>
         </div>
         <div><div class="ft-col-title">Product</div><ul class="ft-links"><li><a href="#">Features</a></li><li><a href="#">Templates</a></li><li><a href="#">Integrations</a></li><li><a href="#">Pricing</a></li><li><a href="#">Changelog</a></li></ul></div>
@@ -1040,30 +681,30 @@
     </div>
     <div class="footer-bottom">
         <div class="fb-copy">© 2024 CardStack, Inc. All rights reserved.</div>
-        <div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><a href="#">GDPR</a></div>
+        <div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
     </div>
 </footer>
 
 <script>
+'use strict';
+
 /* ═══════════════════════════════════════
    SCROLL REVEAL
 ═══════════════════════════════════════ */
-const revealEls = document.querySelectorAll('.reveal');
-const revealObs = new IntersectionObserver((entries) => {
+const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revealObs.unobserve(e.target); }});
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => revealObs.observe(el));
-
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 document.querySelectorAll('.features-grid .feat, .testi-grid .testi, .pricing-cards .pc').forEach((el, i) => {
-    el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+    el.style.transitionDelay = `${(i % 4) * 0.07}s`;
 });
 
 /* ═══════════════════════════════════════
-   PRICING
+   PRICING TOGGLE
 ═══════════════════════════════════════ */
 const billingData = {
-    monthly: { pro:'12', biz:'49', perPro:'per month, billed monthly', perBiz:'per month, billed monthly' },
-    yearly:  { pro:'7',  biz:'29', perPro:'per month, billed yearly',  perBiz:'per month, billed yearly'  }
+    monthly:{ pro:'12', biz:'49', pp:'per month, billed monthly', pb:'per month, billed monthly' },
+    yearly: { pro:'7',  biz:'29', pp:'per month, billed yearly',  pb:'per month, billed yearly'  }
 };
 function switchBilling(btn, period) {
     document.querySelectorAll('.ptbtn').forEach(b => b.classList.remove('active'));
@@ -1071,54 +712,52 @@ function switchBilling(btn, period) {
     const d = billingData[period];
     document.getElementById('price-pro').innerHTML = '<sup>$</sup>' + d.pro;
     document.getElementById('price-biz').innerHTML = '<sup>$</sup>' + d.biz;
-    document.getElementById('per-pro').textContent  = d.perPro;
-    document.getElementById('per-biz').textContent  = d.perBiz;
+    document.getElementById('per-pro').textContent  = d.pp;
+    document.getElementById('per-biz').textContent  = d.pb;
 }
 
 /* ═══════════════════════════════════════
-   NAV
+   NAV SCROLL TINT
 ═══════════════════════════════════════ */
 window.addEventListener('scroll', () => {
     document.getElementById('main-nav').style.borderBottomColor =
         window.scrollY > 30 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.08)';
 }, { passive: true });
-
-document.querySelectorAll('.s-tab').forEach(tab => {
-    tab.addEventListener('click', function() {
-        document.querySelectorAll('.s-tab').forEach(t => t.classList.remove('active'));
+document.querySelectorAll('.s-tab').forEach(t => {
+    t.addEventListener('click', function() {
+        document.querySelectorAll('.s-tab').forEach(s => s.classList.remove('active'));
         this.classList.add('active');
     });
 });
 
 /* BC TILT */
 document.querySelectorAll('.bc').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
+    card.addEventListener('mousemove', e => {
         const r = card.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width  - 0.5;
         const y = (e.clientY - r.top)  / r.height - 0.5;
-        card.style.transform  = `translateY(-3px) rotateX(${-y*7}deg) rotateY(${x*7}deg)`;
+        card.style.transform = `translateY(-3px) rotateX(${-y*7}deg) rotateY(${x*7}deg)`;
         card.style.transition = 'transform 0.05s ease';
     });
     card.addEventListener('mouseleave', () => {
-        card.style.transform  = '';
+        card.style.transform = '';
         card.style.transition = 'transform 0.4s ease';
     });
 });
 
 /* ═══════════════════════════════════════
-   COUNTER
+   COUNTER ANIMATION
 ═══════════════════════════════════════ */
-function animateCounter(el, target, suffix, isDecimal) {
-    const duration = 1800, start = performance.now();
-    function tick(now) {
-        const p = Math.min((now - start) / duration, 1);
+function animateCounter(el, target, suffix, dec) {
+    const dur = 1800, s = performance.now();
+    (function tick(now) {
+        const p = Math.min((now - s) / dur, 1);
         const e = 1 - Math.pow(1 - p, 3);
-        el.textContent = (isDecimal ? (target * e).toFixed(1) : Math.floor(target * e)) + suffix;
+        el.textContent = (dec ? (target * e).toFixed(1) : Math.floor(target * e)) + suffix;
         if (p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+    })(s);
 }
-const numObs = new IntersectionObserver((entries) => {
+const numObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
         if (!e.isIntersecting) return;
         e.target.querySelectorAll('.hero-num-val[data-target]').forEach(el => {
@@ -1127,130 +766,132 @@ const numObs = new IntersectionObserver((entries) => {
         numObs.unobserve(e.target);
     });
 }, { threshold: 0.5 });
-const numSection = document.querySelector('.hero-numbers');
-if (numSection) numObs.observe(numSection);
+const numSec = document.querySelector('.hero-numbers');
+if (numSec) numObs.observe(numSec);
 
 
 /* ═══════════════════════════════════════════════════════════
-   ✈️  SCROLL-DRIVEN FLYING CARD  +  ENERGY LINES
+   ✈️  FLYING CARD + ENERGY LINES  — DESKTOP & MOBILE
    ─────────────────────────────────────────────────────────
-   How it works:
-   1. We wait until the features section is in scroll range.
-   2. Progress = how far user has scrolled THROUGH features section (0→1).
-   3. The card follows a smooth Catmull-Rom spline through every
-      feature card center (in viewport coords, updated every frame).
-   4. Energy lines are drawn from each feature card to the flying card,
-      with animated dashes flowing toward the card.
-   5. Canvas is a real <canvas> element — no SVG ctx bug.
+   Strategy:
+   • One <canvas> fixed overlay — real 2D context, no SVG
+   • Progress = scroll position through #features section (0→1)
+   • Waypoints = source card center → each feat card center
+   • Position interpolated via Catmull-Rom spline every frame
+   • Energy lines = glowing dashes flowing from feat → card
+   • Fully responsive: card size & waypoints recalc on resize
 ═══════════════════════════════════════════════════════════ */
-(function ScrollCardAnimation() {
+(function FlyingCardSystem() {
 
-    if (window.innerWidth < 860) return;
-
-    /* ── Elements ── */
+    /* ── Grab elements ── */
     const flyCard     = document.getElementById('flying-card');
     const canvas      = document.getElementById('energy-canvas');
     const sourcePhone = document.getElementById('source-phone');
     const sourceCard  = document.getElementById('source-card-el');
     const featSection = document.getElementById('features');
 
-    if (!flyCard || !canvas || !featSection) return;
+    if (!flyCard || !canvas || !featSection || !sourceCard) return;
 
-    /* ── Canvas setup ── */
+    /* Verify canvas is real canvas */
+    if (typeof canvas.getContext !== 'function') return;
+
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    function resizeCanvas() {
+    /* ── Responsive card size ── */
+    function cardSize() {
+        return window.innerWidth < 640
+            ? { w: 130, h: 100 }
+            : { w: 180, h: 120 };
+    }
+
+    /* ── Resize canvas to fill viewport ── */
+    function syncCanvas() {
         canvas.width  = window.innerWidth;
         canvas.height = window.innerHeight;
     }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas, { passive: true });
+    syncCanvas();
+    window.addEventListener('resize', syncCanvas, { passive: true });
 
-    /* ── Catmull-Rom spline ── */
-    function catmullRomPoint(p0, p1, p2, p3, t) {
-        const t2 = t * t, t3 = t2 * t;
-        return {
-            x: 0.5 * ((2*p1.x) + (-p0.x+p2.x)*t + (2*p0.x-5*p1.x+4*p2.x-p3.x)*t2 + (-p0.x+3*p1.x-3*p2.x+p3.x)*t3),
-            y: 0.5 * ((2*p1.y) + (-p0.y+p2.y)*t + (2*p0.y-5*p1.y+4*p2.y-p3.y)*t2 + (-p0.y+3*p1.y-3*p2.y+p3.y)*t3)
-        };
-    }
-
-    /* Evaluate position along a full spline given global t ∈ [0,1] */
-    function splinePosition(pts, t) {
-        if (pts.length < 2) return pts[0] || { x: 0, y: 0 };
-        const n      = pts.length - 1;
-        const scaled = t * n;
-        const i      = Math.min(Math.floor(scaled), n - 1);
-        const lt     = scaled - i;
-        const p0 = pts[Math.max(i - 1, 0)];
-        const p1 = pts[i];
-        const p2 = pts[Math.min(i + 1, n)];
-        const p3 = pts[Math.min(i + 2, n)];
-        return catmullRomPoint(p0, p1, p2, p3, lt);
-    }
-
-    /* ── Get center of any element in VIEWPORT coords ── */
+    /* ── Viewport centre of any element ── */
     function vCenter(el) {
         const r = el.getBoundingClientRect();
         return { x: r.left + r.width * 0.5, y: r.top + r.height * 0.5 };
     }
 
-    /* ── Collect feature elements ── */
-    function getFeatEls() {
+    /* ── Collect feature elements (sorted by DOM order) ── */
+    function featEls() {
         return Array.from(document.querySelectorAll('[data-feat]'));
     }
 
-    /* ── Scroll progress through the features section ── */
+    /* ── Scroll progress through features section ── */
     function getProgress() {
-        const r     = featSection.getBoundingClientRect();
-        const vh    = window.innerHeight;
-        /* Start when top of section hits bottom of viewport */
-        /* End when bottom of section leaves top of viewport */
-        const start = vh;            /* r.top === vh  → progress 0   */
-        const end   = -r.height;    /* r.top === -h  → progress 1   */
-        const raw   = (r.top - start) / (end - start);
+        const r   = featSection.getBoundingClientRect();
+        const vh  = window.innerHeight;
+        // 0 when top of section = bottom of viewport
+        // 1 when bottom of section = top of viewport
+        const raw = (vh - r.top) / (vh + r.height);
         return Math.max(0, Math.min(1, raw));
     }
 
-    /* ── Animated dash offset for flowing energy lines ── */
-    let dashOffset = 0;
-    let lastTime   = 0;
+    /* ── Catmull-Rom spline ── */
+    function crPoint(p0, p1, p2, p3, t) {
+        const t2 = t*t, t3 = t2*t;
+        return {
+            x: 0.5*((2*p1.x)+(-p0.x+p2.x)*t+(2*p0.x-5*p1.x+4*p2.x-p3.x)*t2+(-p0.x+3*p1.x-3*p2.x+p3.x)*t3),
+            y: 0.5*((2*p1.y)+(-p0.y+p2.y)*t+(2*p0.y-5*p1.y+4*p2.y-p3.y)*t2+(-p0.y+3*p1.y-3*p2.y+p3.y)*t3)
+        };
+    }
 
-    /* ── Draw glowing energy line ── */
-    function drawEnergyLine(ax, ay, bx, by, alpha, time) {
-        /* outer glow */
+    function splinePos(pts, t) {
+        if (pts.length === 0) return { x: 0, y: 0 };
+        if (pts.length === 1) return pts[0];
+        const n  = pts.length - 1;
+        const sc = Math.max(0, Math.min(t * n, n - 0.0001));
+        const i  = Math.floor(sc);
+        const lt = sc - i;
+        return crPoint(
+            pts[Math.max(0, i-1)],
+            pts[i],
+            pts[Math.min(n, i+1)],
+            pts[Math.min(n, i+2)],
+            lt
+        );
+    }
+
+    /* ── Draw single energy line with animated dash ── */
+    function drawLine(ax, ay, bx, by, alpha, time) {
+        if (alpha <= 0.01) return;
+
+        /* ── outer glow ── */
         ctx.save();
-        ctx.globalAlpha = alpha * 0.18;
+        ctx.globalAlpha = alpha * 0.15;
+        ctx.shadowColor = 'rgba(255,255,255,0.8)';
+        ctx.shadowBlur  = 12;
         ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth   = 8;
-        ctx.filter      = 'blur(4px)';
+        ctx.lineWidth   = 6;
         ctx.beginPath();
         ctx.moveTo(ax, ay);
         ctx.lineTo(bx, by);
         ctx.stroke();
-        ctx.filter = 'none';
         ctx.restore();
 
-        /* mid glow */
+        /* ── core line ── */
         ctx.save();
-        ctx.globalAlpha = alpha * 0.35;
+        ctx.globalAlpha = alpha * 0.4;
         ctx.strokeStyle = '#ffffff';
-        ctx.lineWidth   = 2.5;
+        ctx.lineWidth   = 1.5;
         ctx.beginPath();
         ctx.moveTo(ax, ay);
         ctx.lineTo(bx, by);
         ctx.stroke();
         ctx.restore();
 
-        /* animated dashes flowing toward card */
-        const dist  = Math.hypot(bx - ax, by - ay);
-        const gap   = 18;
-        const dash  = 8;
-        const speed = 60; /* px per second */
-        const offset = ((time * speed) % (dash + gap));
-
+        /* ── flowing dashes ── */
+        const dash = 7, gap = 14;
+        const offset = (time * 55) % (dash + gap);
         ctx.save();
-        ctx.globalAlpha  = alpha * 0.9;
+        ctx.globalAlpha  = alpha * 0.85;
         ctx.strokeStyle  = '#ffffff';
         ctx.lineWidth    = 1.5;
         ctx.setLineDash([dash, gap]);
@@ -1262,144 +903,114 @@ if (numSection) numObs.observe(numSection);
         ctx.setLineDash([]);
         ctx.restore();
 
-        /* bright dot at feature card end */
+        /* ── bright origin dot ── */
         ctx.save();
-        ctx.globalAlpha = alpha * 0.8;
-        const grd = ctx.createRadialGradient(ax, ay, 0, ax, ay, 10);
-        grd.addColorStop(0,   'rgba(255,255,255,0.9)');
-        grd.addColorStop(0.5, 'rgba(255,255,255,0.3)');
-        grd.addColorStop(1,   'rgba(255,255,255,0)');
-        ctx.fillStyle = grd;
-        ctx.beginPath();
-        ctx.arc(ax, ay, 10, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.globalAlpha = alpha * 0.9;
+        const g = ctx.createRadialGradient(ax, ay, 0, ax, ay, 9);
+        g.addColorStop(0,   'rgba(255,255,255,1)');
+        g.addColorStop(0.4, 'rgba(255,255,255,0.4)');
+        g.addColorStop(1,   'rgba(255,255,255,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(ax, ay, 9, 0, Math.PI*2); ctx.fill();
         ctx.restore();
     }
 
-    /* ── Draw a halo around the flying card ── */
-    function drawCardHalo(cx, cy, alpha) {
+    /* ── Halo around flying card ── */
+    function drawHalo(cx, cy, alpha) {
         ctx.save();
-        ctx.globalAlpha = alpha * 0.5;
-        const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 80);
-        grd.addColorStop(0,   'rgba(255,255,255,0.15)');
-        grd.addColorStop(0.5, 'rgba(255,255,255,0.05)');
-        grd.addColorStop(1,   'rgba(255,255,255,0)');
-        ctx.fillStyle = grd;
-        ctx.beginPath();
-        ctx.arc(cx, cy, 80, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.globalAlpha = alpha * 0.45;
+        const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, 70);
+        g.addColorStop(0,   'rgba(255,255,255,0.18)');
+        g.addColorStop(0.5, 'rgba(255,255,255,0.06)');
+        g.addColorStop(1,   'rgba(255,255,255,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(cx, cy, 70, 0, Math.PI*2); ctx.fill();
         ctx.restore();
     }
 
-    /* ── Card dimensions ── */
-    const CARD_W = 190;
-    const CARD_H = 120;
+    /* ── State ── */
+    let time = 0, lastTs = 0;
 
-    /* ── Main animation loop ── */
-    let rafId = null;
-    let time  = 0;
-
+    /* ── Main rAF loop ── */
     function frame(ts) {
-        const dt = Math.min((ts - lastTime) / 1000, 0.05);
-        lastTime = ts;
+        requestAnimationFrame(frame);
+
+        const dt = Math.min((ts - lastTs) / 1000, 0.05);
+        lastTs   = ts;
         time    += dt;
 
-        const progress = getProgress();
-        const featEls  = getFeatEls();
-
-        /* Clear canvas every frame */
+        /* Clear canvas */
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        if (progress <= 0 || progress >= 1 || featEls.length === 0) {
-            /* Hide card outside zone */
+        const progress = getProgress();
+        const fEls     = featEls();
+
+        /* Outside active zone — hide card, clear glows */
+        if (progress <= 0.005 || progress >= 0.995 || fEls.length === 0) {
             flyCard.style.opacity   = '0';
-            flyCard.style.transform = 'translate(-9999px,-9999px)';
-            /* Remove glow from all features */
-            featEls.forEach(el => el.classList.remove('energy-active'));
-            /* Remove phone glow */
+            flyCard.style.transform = 'translate(-9999px,-9999px) scale(1)';
+            fEls.forEach(el => el.classList.remove('energy-active'));
             if (sourcePhone) sourcePhone.classList.remove('source-active');
-            rafId = requestAnimationFrame(frame);
             return;
         }
 
-        /* Build spline waypoints in viewport coords:
-           Start  = source phone card center
-           Middle = each feature card center in order
-           End    = source phone card center (back into phone at bottom — 
-                    or if you have a dest phone, use that) */
-        const srcCenter = vCenter(sourceCard);
-        const waypoints = [srcCenter];
-        featEls.forEach(el => waypoints.push(vCenter(el)));
-        waypoints.push(srcCenter); /* loop back toward phone */
+        /* Build waypoints: source → feats → source (loop back) */
+        const src = vCenter(sourceCard);
+        const pts = [src, ...fEls.map(el => vCenter(el)), src];
 
-        /* Card position */
-        const pos = splinePosition(waypoints, progress);
-        const px  = pos.x - CARD_W / 2;
-        const py  = pos.y - CARD_H / 2;
+        /* Current card position */
+        const pos  = splinePos(pts, progress);
 
-        /* Rotation: follow tangent */
-        const tNext = Math.min(progress + 0.005, 1);
-        const posN  = splinePosition(waypoints, tNext);
-        const angle = Math.atan2(posN.y - pos.y, posN.x - pos.x) * (180 / Math.PI) * 0.25;
+        /* Tangent for slight rotation */
+        const tAdv = Math.min(progress + 0.008, 0.999);
+        const posN = splinePos(pts, tAdv);
+        const ang  = Math.atan2(posN.y - pos.y, posN.x - pos.x) * (180/Math.PI) * 0.2;
 
-        /* Scale: slightly larger mid-journey */
-        const scaleMid = 0.85 + Math.sin(progress * Math.PI) * 0.25;
+        /* Dynamic scale */
+        const sc = 0.82 + Math.sin(progress * Math.PI) * 0.28;
 
-        /* Apply to DOM element */
+        /* Card dimensions */
+        const { w: CW, h: CH } = cardSize();
+        const px = pos.x - CW / 2;
+        const py = pos.y - CH / 2;
+
+        /* Apply to flying card DOM element */
         flyCard.style.opacity   = '1';
-        flyCard.style.transform =
-            `translate(${px}px, ${py}px) rotate(${angle}deg) scale(${scaleMid})`;
+        flyCard.style.transform = `translate(${px}px,${py}px) rotate(${ang}deg) scale(${sc})`;
 
-        /* Draw halo under card */
-        drawCardHalo(pos.x, pos.y, 0.8);
+        /* Halo */
+        drawHalo(pos.x, pos.y, 0.9);
 
-        /* Draw energy lines from nearby features */
-        featEls.forEach((el, i) => {
+        /* Energy lines from each feature card */
+        const NEAR = Math.min(window.innerWidth * 0.6, 480);
+
+        fEls.forEach(el => {
             const fc   = vCenter(el);
             const dist = Math.hypot(fc.x - pos.x, fc.y - pos.y);
 
-            /* proximity threshold — features within 500px get lines */
-            const maxDist = 500;
-            if (dist > maxDist) {
+            if (dist > NEAR) {
                 el.classList.remove('energy-active');
                 return;
             }
 
-            const proximity = 1 - dist / maxDist;
-            /* Boost alpha for very close features */
-            const alpha = Math.pow(proximity, 1.5);
+            const prox  = 1 - dist / NEAR;
+            const alpha = Math.pow(prox, 1.4);
+            drawLine(fc.x, fc.y, pos.x, pos.y, alpha, time);
 
-            drawEnergyLine(fc.x, fc.y, pos.x, pos.y, alpha, time);
-
-            /* Glow feature card */
-            if (alpha > 0.25) {
-                el.classList.add('energy-active');
-            } else {
-                el.classList.remove('energy-active');
-            }
+            if (alpha > 0.22) el.classList.add('energy-active');
+            else              el.classList.remove('energy-active');
         });
 
-        /* Phone glow when card is near source */
+        /* Phone glow when card near source */
         if (sourcePhone) {
-            const phoneDist = Math.hypot(srcCenter.x - pos.x, srcCenter.y - pos.y);
-            if (phoneDist < 200) {
-                sourcePhone.classList.add('source-active');
-            } else {
-                sourcePhone.classList.remove('source-active');
-            }
+            const pd = Math.hypot(src.x - pos.x, src.y - pos.y);
+            sourcePhone.classList.toggle('source-active', pd < 160);
         }
-
-        rafId = requestAnimationFrame(frame);
     }
 
-    /* ── Start the loop ── */
-    lastTime = performance.now();
-    rafId    = requestAnimationFrame(frame);
-
-    /* ── Handle resize: just let frame() recalculate vCenter ── */
-    window.addEventListener('resize', () => {
-        resizeCanvas();
-    }, { passive: true });
+    /* ── Kick off ── */
+    lastTs = performance.now();
+    requestAnimationFrame(frame);
 
 })();
 </script>
